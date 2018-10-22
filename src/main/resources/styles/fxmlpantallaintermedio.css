@@ -1,0 +1,9 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+.btn_cara2{
+    -fx-background-image: url("/img/caraFeliz.png");
+}
+}
