@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Sphere;
 
 /**
  * FXML Controller class
@@ -36,16 +35,25 @@ public class FXMLPantallaMenuController implements Initializable {
     @FXML
     private BorderPane fxRoot;
 
-    private FXMLPantallaOpcionesController OpcCon;
-    private AnchorPane OpcionesPane;
+//    private FXMLPantallaOpcionesController OpcionesController;
+//    private AnchorPane OpcionesPane;
 
+    private FXMLPantallaPrincipalController principal;
 
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
+    
     public void clickJugar() {
 
     }
 
     public void clickPersonalizar() {
-        cargarPantallaOpciones();
+        principal.cargarPantallaOpciones();
         
     }
 
@@ -61,29 +69,29 @@ public class FXMLPantallaMenuController implements Initializable {
 
     }
 
-    private void preCargaOpciones() {
-
-        try {
-            FXMLLoader loaderMenu = new FXMLLoader(
-                    getClass().getResource(
-                            "/fxml/FXMLPantallaOpciones.fxml"));
-            OpcionesPane = loaderMenu.load();
-            OpcCon = loaderMenu.getController();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-    
-    @FXML
-    public void cargarPantallaOpciones() {
-        fxRoot.setCenter(OpcionesPane);
-    }
-    
-    
+//    private void preCargaOpciones() {
+//
+//        try {
+//            FXMLLoader loaderMenu = new FXMLLoader(
+//                    getClass().getResource(
+//                            "/fxml/FXMLPantallaOpciones.fxml"));
+//            OpcionesPane = loaderMenu.load();
+//            OpcionesController = loaderMenu.getController();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+//    
+//    @FXML
+//    public void cargarPantallaOpciones() {
+//        fxRoot.setCenter(OpcionesPane);
+//    }
+//    
+//    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        preCargaOpciones();
+//        preCargaOpciones();
         ImagePattern imagePattern = new ImagePattern(new Image("/images/icon.png"));
         Icon.setFill(imagePattern);
     }

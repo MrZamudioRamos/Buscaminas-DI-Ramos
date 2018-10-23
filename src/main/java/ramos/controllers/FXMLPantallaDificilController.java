@@ -17,17 +17,34 @@ import javafx.scene.control.Button;
  * @author Ricardo
  */
 public class FXMLPantallaDificilController implements Initializable {
+
+    private FXMLPantallaPrincipalController principal;
+
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
+    
+    public void clickReiniciarDificil(){
+        
+    }
+    
+    public void clickSalirDificil(){
+        
+    }
     
     @FXML
     private Button btn_cara3;
-    
+
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

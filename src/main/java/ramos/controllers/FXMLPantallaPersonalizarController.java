@@ -15,7 +15,24 @@ import javafx.fxml.Initializable;
  * @author Ricardo
  */
 public class FXMLPantallaPersonalizarController implements Initializable {
+private FXMLPantallaPrincipalController principal;
 
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
+    
+    public void clickJugar(){
+        
+    }
+    
+    public void clickAtras(){
+        
+    }
+            
     /**
      * Initializes the controller class.
      */

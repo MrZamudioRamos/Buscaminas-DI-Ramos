@@ -30,46 +30,221 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     private MenuBar fxMenu;
 
-    private FXMLPantallaMenuController MenuCon;
-    private AnchorPane MenuPane;
-
+    private AnchorPane pantallaOpciones;
+    private FXMLPantallaOpcionesController opcionesController;
+    private AnchorPane pantallaPersonalizar;
+    private FXMLPantallaPersonalizarController personalizarController;
+    private AnchorPane pantallaPrincipiante;
+    private FXMLPantallaPrincipianteController principianteController;
+    private AnchorPane pantallaMenu;
+    private FXMLPantallaMenuController menuController;
+    private AnchorPane pantallaIntermedio;
+    private FXMLPantallaIntermedioController intermedioController;
+    private AnchorPane pantallaElegir;
+    private FXMLPantallaElegirController elegirController;
+    private AnchorPane pantallaDificil;
+    private FXMLPantallaDificilController dificilController;
     
-
-    public void clickInicio() {
-    }
-
-    public void clickGuia() {
-    }
-
-    public void clickSalir() {
-    }
-
+    //PRECARGAR PANTALLAS
+    
     @FXML
-    public void cargarPantallaMenu() {
-        fxMenu.setVisible(false);
-        fxRoot.setCenter(MenuPane);
-    }
-
-    private void preCargaMenu() {
-        
+    public void precargarPantallaMenu() {
         
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
                             "/fxml/FXMLPantallaMenu.fxml"));
-            MenuPane = loaderMenu.load();
-            MenuCon = loaderMenu.getController();
+            pantallaMenu = loaderMenu.load();
+            menuController
+                    = loaderMenu.getController();
+
+            menuController.setPrincipal(this);
+
         } catch (IOException ex) {
+
             Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
+    @FXML
+    public void precargarPantallaOpciones() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaOpciones.fxml"));
+            pantallaOpciones = loaderMenu.load();
+            opcionesController
+                    = loaderMenu.getController();
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        preCargaMenu();
-        cargarPantallaMenu();
+            opcionesController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaPersonalizar() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaPersonalizar.fxml"));
+            pantallaPersonalizar = loaderMenu.load();
+            personalizarController
+                    = loaderMenu.getController();
+
+            personalizarController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaPersonalizarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaPrincipiante() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaPrincipiante.fxml"));
+            pantallaPrincipiante = loaderMenu.load();
+            principianteController
+                    = loaderMenu.getController();
+
+            principianteController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaPrincipianteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaDificil() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaDificil.fxml"));
+            pantallaDificil = loaderMenu.load();
+            dificilController
+                    = loaderMenu.getController();
+
+            dificilController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaDificilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaElegir() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaElegir.fxml"));
+            pantallaElegir = loaderMenu.load();
+            elegirController
+                    = loaderMenu.getController();
+
+            elegirController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaElegirController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaIntermedio() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaIntermedio.fxml"));
+            pantallaIntermedio = loaderMenu.load();
+            intermedioController
+                    = loaderMenu.getController();
+
+            intermedioController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void cargarPantallaMenu() {
+        fxMenu.setVisible(false);
+        fxRoot.setCenter(pantallaMenu);
     }
 
+    @FXML
+    public void cargarPantallaOpciones() {
+        fxRoot.setCenter(pantallaOpciones);
+
+    }
+
+    @FXML
+    public void cargarPantallaElegir() {
+        fxRoot.setCenter(pantallaElegir);
+
+    }
+
+    @FXML
+    public void cargarPantallaPersonalizar() {
+        fxRoot.setCenter(pantallaPersonalizar);
+    }
+    
+    @FXML
+    public void cargarPantallaPrincipiante() {
+        fxRoot.setCenter(pantallaPrincipiante);
+
+    }
+
+    @FXML
+    public void cargarPantallaDificil() {
+        fxRoot.setCenter(pantallaDificil);
+
+    }
+
+    @FXML
+    public void cargarPantallaIntermedio() {
+        fxRoot.setCenter(pantallaIntermedio);
+    }
+    
+    public void clickInicio() {
+
+    }
+
+    public void clickGuia() {
+
+    }
+
+    public void clickSalir() {
+
+    }
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        precargarPantallaMenu();
+        precargarPantallaOpciones();
+        precargarPantallaDificil();
+        precargarPantallaElegir();
+        precargarPantallaIntermedio();
+        precargarPantallaPersonalizar();
+        precargarPantallaPrincipiante();
+        cargarPantallaMenu();
+    }
 }

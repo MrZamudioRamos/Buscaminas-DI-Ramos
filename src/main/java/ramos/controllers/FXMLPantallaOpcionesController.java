@@ -16,14 +16,23 @@ import javafx.fxml.Initializable;
  */
 public class FXMLPantallaOpcionesController implements Initializable {
     
+    private FXMLPantallaPrincipalController principal;
+
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
     
     
     public void clickPorDefecto(){
-        
+        principal.cargarPantallaElegir();
     }
     
     public void clickPersonalizado(){
-        
+        principal.cargarPantallaPersonalizar();
     }
     /**
      * Initializes the controller class.

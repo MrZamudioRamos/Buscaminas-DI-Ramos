@@ -17,6 +17,23 @@ import javafx.scene.control.Button;
  * @author Ricardo
  */
 public class FXMLPantallaIntermedioController implements Initializable {
+    private FXMLPantallaPrincipalController principal;
+
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
+    
+    public void clickReiniciarIntermedio(){
+        
+    }
+    
+    public void clickSalirIntermedio(){
+        
+    }
     
     @FXML
     private Button btn_cara2;

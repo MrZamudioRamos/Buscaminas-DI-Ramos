@@ -19,6 +19,24 @@ import javafx.scene.shape.Circle;
  */
 public class FXMLPantallaPrincipianteController implements Initializable {
     
+    private FXMLPantallaPrincipalController principal;
+
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
+    
+    public void clickSalirPrincipiante(){
+        
+    }
+    
+    public void clickReiniciarPrincipiante(){
+        
+    }
+    
     @FXML
     private Circle btn_cara;
     /**

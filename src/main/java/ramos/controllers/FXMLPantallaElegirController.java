@@ -17,6 +17,15 @@ import javafx.scene.control.RadioButton;
  * @author Ricardo
  */
 public class FXMLPantallaElegirController implements Initializable {
+    private FXMLPantallaPrincipalController principal;
+
+    public FXMLPantallaPrincipalController getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(FXMLPantallaPrincipalController principal) {
+        this.principal = principal;
+    }
     
     @FXML
     private RadioButton fxElegirFacil;
