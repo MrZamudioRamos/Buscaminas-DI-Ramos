@@ -5,11 +5,20 @@
  */
 package ramos.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Sphere;
 
 /**
  * FXML Controller class
@@ -17,35 +26,66 @@ import javafx.scene.shape.Rectangle;
  * @author Ricardo
  */
 public class FXMLPantallaMenuController implements Initializable {
+
     @FXML
     private Rectangle fondoMenu;
-    /**
-     * Initializes the controller class.
-     */
     
-    public void clickJugar(){
+    @FXML
+    private Rectangle Icon;
+    
+    @FXML
+    private BorderPane fxRoot;
+
+    private FXMLPantallaOpcionesController OpcCon;
+    private AnchorPane OpcionesPane;
+
+
+    public void clickJugar() {
+
+    }
+
+    public void clickPersonalizar() {
+        cargarPantallaOpciones();
         
     }
-    
-    public void clickPersonalizar(){
-        
+
+    public void clickVerRanking() {
+
+    }
+
+    public void clickAyuda() {
+
+    }
+
+    public void clickSalir() {
+
+    }
+
+    private void preCargaOpciones() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaOpciones.fxml"));
+            OpcionesPane = loaderMenu.load();
+            OpcCon = loaderMenu.getController();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
-    public void clickVerRanking(){
-        
+    @FXML
+    public void cargarPantallaOpciones() {
+        fxRoot.setCenter(OpcionesPane);
     }
     
-    public void clickAyuda (){
-        
-    }
-    
-    public void clickSalir(){
-        
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        preCargaOpciones();
+        ImagePattern imagePattern = new ImagePattern(new Image("/images/icon.png"));
+        Icon.setFill(imagePattern);
+    }
+
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -24,10 +25,12 @@ public class MainBuscaminas extends Application {
             throws IOException {
         
         FXMLLoader loaderMenu = new FXMLLoader(
-                getClass().getResource("/fxml/FXMLPrincipal.fxml"));
+                getClass().getResource("/fxml/FXMLPantallaPrincipal.fxml"));
         BorderPane root = loaderMenu.load();
- 
+        
+        
         Scene scene = new Scene(root);
+        primaryStage.getIcons().add(new Image("/images/icon.png"));
         primaryStage.setTitle("BUSCAMINAS");
         primaryStage.setScene(scene);
         primaryStage.show();

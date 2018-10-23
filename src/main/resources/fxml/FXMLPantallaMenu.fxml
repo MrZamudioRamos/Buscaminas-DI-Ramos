@@ -6,7 +6,6 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="409.0" prefWidth="500.0" styleClass="fondoMenu" stylesheets="@../styles/fxmlpantallaprincipiante.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaMenuController">
@@ -26,11 +25,11 @@
       <Button layoutX="197.0" layoutY="253.0" mnemonicParsing="false" onAction="#clickJugar" prefHeight="30.0" prefWidth="148.0" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP" />
       <Button layoutX="284.0" layoutY="385.0" mnemonicParsing="false" onAction="#clickAyuda" prefHeight="30.0" prefWidth="148.0" text="AYUDA" />
       <Button layoutX="197.0" layoutY="425.0" mnemonicParsing="false" onAction="#clickSalir" prefHeight="30.0" prefWidth="148.0" text="SALIR" />
-      <Sphere fx:id="fxEsfera" layoutX="292.0" layoutY="180.0" radius="50" />
       <Label layoutX="97.0" layoutY="14.0" prefHeight="100.0" prefWidth="424.0" text="BUSCAMINAS">
          <font>
             <Font size="64.0" />
          </font>
       </Label>
+      <Rectangle fx:id="Icon" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="100.0" layoutX="242.0" layoutY="138.0" stroke="#ffffff00" strokeType="INSIDE" width="101.0" />
    </children>
 </AnchorPane>
