@@ -15,7 +15,16 @@ import javafx.fxml.Initializable;
  * @author Ricardo
  */
 public class FXMLPantallaOpcionesController implements Initializable {
-
+    
+    
+    
+    public void clickPorDefecto(){
+        
+    }
+    
+    public void clickPersonalizado(){
+        
+    }
     /**
      * Initializes the controller class.
      */

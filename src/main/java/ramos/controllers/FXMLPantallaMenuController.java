@@ -22,6 +22,27 @@ public class FXMLPantallaMenuController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    public void clickJugar(){
+        
+    }
+    
+    public void clickPersonalizar(){
+        
+    }
+    
+    public void clickVerRanking(){
+        
+    }
+    
+    public void clickAyuda (){
+        
+    }
+    
+    public void clickSalir(){
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

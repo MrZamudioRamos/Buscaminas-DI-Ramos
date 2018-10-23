@@ -7,7 +7,9 @@ package ramos.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 
 /**
  * FXML Controller class
@@ -15,7 +17,26 @@ import javafx.fxml.Initializable;
  * @author Ricardo
  */
 public class FXMLPantallaElegirController implements Initializable {
-
+    
+    @FXML
+    private RadioButton fxElegirFacil;
+    
+    @FXML
+    private RadioButton fxElegirMedio;
+    
+    @FXML
+    private RadioButton fxElegirDificil;
+    
+    public void clickSalirElegir(){
+        
+    }
+    
+    public void clickAtrasElegir(){
+        
+    }
+    
+    
+            
     /**
      * Initializes the controller class.
      */

@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaElegirController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ramos.controllers.FXMLPantallaElegirController">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="407.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="607.0">
+      <Rectangle fx:id="fxFondoElegir" arcHeight="5.0" arcWidth="5.0" height="407.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="607.0">
          <fill>
             <RadialGradient centerX="0.5" centerY="0.5142857142857142" radius="0.5">
                <stops>
@@ -22,34 +22,34 @@
             </RadialGradient>
          </fill>
       </Rectangle>
-      <RadioButton layoutX="93.0" layoutY="246.0" mnemonicParsing="false" text="FÁCIL" textFill="WHITE">
+      <RadioButton fx:id="fxElegirFacil" layoutX="93.0" layoutY="246.0" mnemonicParsing="false" text="FÁCIL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="262.0" layoutY="246.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirMedio" layoutX="262.0" layoutY="246.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="419.0" layoutY="246.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE">
+      <RadioButton fx:id="fxElegirDificil" layoutX="419.0" layoutY="246.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <Button layoutX="419.0" layoutY="324.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" text="JUGAR" />
-      <Button layoutX="36.0" layoutY="324.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" text="ATRÁS" />
-      <RadioButton layoutX="412.0" layoutY="97.0" mnemonicParsing="false" text="GRANDE" textFill="WHITE">
+      <Button layoutX="419.0" layoutY="324.0" mnemonicParsing="false" onAction="#clickSalirElegir" prefHeight="47.0" prefWidth="136.0" text="JUGAR" />
+      <Button layoutX="36.0" layoutY="324.0" mnemonicParsing="false" onAction="#clickAtrasElegir" prefHeight="47.0" prefWidth="136.0" text="ATRÁS" />
+      <RadioButton fx:id="fxElegirGrande" layoutX="412.0" layoutY="97.0" mnemonicParsing="false" text="GRANDE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="249.0" layoutY="97.0" mnemonicParsing="false" text="MEDIANO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirMediano" layoutX="249.0" layoutY="97.0" mnemonicParsing="false" text="MEDIANO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="91.0" layoutY="97.0" mnemonicParsing="false" text="PEQUEÑO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirPequeño" layoutX="91.0" layoutY="97.0" mnemonicParsing="false" text="PEQUEÑO" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -66,5 +66,3 @@
       </Label>
    </children>
 </AnchorPane>
-
-

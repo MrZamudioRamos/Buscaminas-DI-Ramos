@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaPersonalizarController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ramos.controllers.FXMLPantallaPersonalizarController">
     <stylesheets>
         <URL value="@/styles/fxmlpantallapersonalizar.css" />
     </stylesheets>
@@ -26,8 +26,8 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TextField layoutX="243.0" layoutY="118.0" />
-      <TextField layoutX="243.0" layoutY="174.0" />
+      <TextField fx:id="fxTextFieldAncho" layoutX="243.0" layoutY="118.0" />
+      <TextField fx:id="fxTextFieldAlto" layoutX="243.0" layoutY="174.0" />
       <Label layoutX="157.0" layoutY="118.0" prefHeight="25.0" prefWidth="77.0" text="Ancho" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="18.0" />
@@ -38,17 +38,17 @@
             <Font name="DejaVu Sans Condensed Bold" size="18.0" />
          </font>
       </Label>
-      <RadioButton layoutX="83.0" layoutY="236.0" mnemonicParsing="false" text="FÁCIL" textFill="WHITE">
+      <RadioButton fx:id="fxPersonalizarFacil" layoutX="83.0" layoutY="236.0" mnemonicParsing="false" text="FÁCIL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="243.0" layoutY="238.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE">
+      <RadioButton fx:id="fxPersonalizarMedio" layoutX="243.0" layoutY="238.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Condensed Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="410.0" layoutY="237.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE">
+      <RadioButton fx:id="fxPersonalizarDificil" layoutX="410.0" layoutY="237.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -58,8 +58,7 @@
             <Font name="Lucida Sans Unicode" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="392.0" layoutY="314.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" text="JUGAR" />
-      <Button layoutX="73.0" layoutY="314.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="136.0" text="ATRÁS" />
+      <Button layoutX="392.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickJugar" prefHeight="47.0" prefWidth="136.0" text="JUGAR" />
+      <Button layoutX="73.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="47.0" prefWidth="136.0" text="ATRÁS" />
    </children>
 </AnchorPane>
-

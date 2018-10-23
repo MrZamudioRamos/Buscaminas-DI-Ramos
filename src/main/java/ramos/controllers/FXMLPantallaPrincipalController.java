@@ -7,15 +7,35 @@ package ramos.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
  *
- * @author Ricardo
+ * @author dam2
  */
-public class FXMLPantallaNivelesController implements Initializable {
+public class FXMLPantallaPrincipalController implements Initializable {
+    
+    @FXML
+    private BorderPane fxRoot;
 
+    @FXML
+    private MenuBar fxMenu;
+    
+    public void clickInicio(){
+        
+    }
+    
+    public void clickGuia(){
+        
+    }
+    
+    public void clickSalir(){
+        
+    }
     /**
      * Initializes the controller class.
      */
