@@ -25,18 +25,9 @@ import javafx.scene.shape.Rectangle;
  * @author Ricardo
  */
 public class FXMLPantallaMenuController implements Initializable {
-
-    @FXML
-    private Rectangle fondoMenu;
     
     @FXML
     private Rectangle Icon;
-    
-    @FXML
-    private BorderPane fxRoot;
-
-//    private FXMLPantallaOpcionesController OpcionesController;
-//    private AnchorPane OpcionesPane;
 
     private FXMLPantallaPrincipalController principal;
 
@@ -69,29 +60,8 @@ public class FXMLPantallaMenuController implements Initializable {
 
     }
 
-//    private void preCargaOpciones() {
-//
-//        try {
-//            FXMLLoader loaderMenu = new FXMLLoader(
-//                    getClass().getResource(
-//                            "/fxml/FXMLPantallaOpciones.fxml"));
-//            OpcionesPane = loaderMenu.load();
-//            OpcionesController = loaderMenu.getController();
-//        } catch (IOException ex) {
-//            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//    }
-//    
-//    @FXML
-//    public void cargarPantallaOpciones() {
-//        fxRoot.setCenter(OpcionesPane);
-//    }
-//    
-//    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        preCargaOpciones();
         ImagePattern imagePattern = new ImagePattern(new Image("/images/icon.png"));
         Icon.setFill(imagePattern);
     }

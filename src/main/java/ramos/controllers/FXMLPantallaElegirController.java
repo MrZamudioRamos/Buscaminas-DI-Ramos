@@ -36,12 +36,29 @@ public class FXMLPantallaElegirController implements Initializable {
     @FXML
     private RadioButton fxElegirDificil;
     
+    @FXML
+    private RadioButton fxElegirGrande;
+    
+    @FXML
+    private RadioButton fxElegirMediano;
+    
+    @FXML
+    private RadioButton fxElegirPequeño;
+    
+    
     public void clickSalirElegir(){
+        if (fxElegirPequeño.isSelected()) {
+            principal.cargarPantallaPrincipiante();
+        }else if (fxElegirMediano.isSelected()) {
+            principal.cargarPantallaIntermedio();
+        }else if (fxElegirGrande.isSelected()){
+            principal.cargarPantallaDificil();
+        }
         
     }
     
     public void clickAtrasElegir(){
-        
+        principal.cargarPantallaOpciones();
     }
     
     

@@ -33,7 +33,7 @@ public class FXMLPantallaDificilController implements Initializable {
     }
     
     public void clickSalirDificil(){
-        
+        principal.cargarPantallaElegir();
     }
     
     @FXML

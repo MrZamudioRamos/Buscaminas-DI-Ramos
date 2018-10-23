@@ -30,7 +30,7 @@ private FXMLPantallaPrincipalController principal;
     }
     
     public void clickAtras(){
-        
+        principal.cargarPantallaOpciones();
     }
             
     /**

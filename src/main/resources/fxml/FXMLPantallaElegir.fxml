@@ -3,13 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ramos.controllers.FXMLPantallaElegirController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaElegirController">
     <children>
       <Rectangle fx:id="fxFondoElegir" arcHeight="5.0" arcWidth="5.0" height="407.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="607.0">
          <fill>
@@ -26,13 +27,16 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="dificultad" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="fxElegirMedio" layoutX="262.0" layoutY="246.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirMedio" layoutX="262.0" layoutY="246.0" mnemonicParsing="false" text="MEDIO" textFill="WHITE" toggleGroup="$dificultad">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="fxElegirDificil" layoutX="419.0" layoutY="246.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE">
+      <RadioButton fx:id="fxElegirDificil" layoutX="419.0" layoutY="246.0" mnemonicParsing="false" text="DIFÍCIL" textFill="WHITE" toggleGroup="$dificultad">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -43,13 +47,16 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="tamano" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="fxElegirMediano" layoutX="249.0" layoutY="97.0" mnemonicParsing="false" text="MEDIANO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirMediano" layoutX="249.0" layoutY="97.0" mnemonicParsing="false" text="MEDIANO" textFill="WHITE" toggleGroup="$tamano">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="fxElegirPequeño" layoutX="91.0" layoutY="97.0" mnemonicParsing="false" text="PEQUEÑO" textFill="WHITE">
+      <RadioButton fx:id="fxElegirPequeño" layoutX="91.0" layoutY="97.0" mnemonicParsing="false" text="PEQUEÑO" textFill="WHITE" toggleGroup="$tamano">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -32,7 +32,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
     
     public void clickSalirIntermedio(){
-        
+        principal.cargarPantallaElegir();
     }
     
     @FXML

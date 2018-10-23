@@ -30,7 +30,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     }
     
     public void clickSalirPrincipiante(){
-        
+        principal.cargarPantallaElegir();
     }
     
     public void clickReiniciarPrincipiante(){
