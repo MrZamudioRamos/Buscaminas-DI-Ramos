@@ -28,6 +28,9 @@ public class FXMLPantallaMenuController implements Initializable {
     
     @FXML
     private Rectangle Icon;
+    
+    @FXML 
+    private AnchorPane anchor;
 
     private FXMLPantallaPrincipalController principal;
 
