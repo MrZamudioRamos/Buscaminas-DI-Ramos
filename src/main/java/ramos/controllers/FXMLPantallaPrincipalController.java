@@ -184,8 +184,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarPantallaMenu() {
         fxMenu.setVisible(false);
         fxRoot.setCenter(pantallaMenu);
-        fxRoot.setMinHeight(484);
-        fxRoot.setMinWidth(650);
+        fxRoot.setMinHeight(500);
+        fxRoot.setMinWidth(600);
     }
 
     @FXML
