@@ -184,40 +184,55 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarPantallaMenu() {
         fxMenu.setVisible(false);
         fxRoot.setCenter(pantallaMenu);
+        fxRoot.setMinHeight(484);
+        fxRoot.setMinWidth(650);
     }
 
     @FXML
     public void cargarPantallaOpciones() {
+        
         fxRoot.setCenter(pantallaOpciones);
-
+        fxRoot.setMinHeight(500);
+        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaElegir() {
         fxRoot.setCenter(pantallaElegir);
-
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaPersonalizar() {
         fxRoot.setCenter(pantallaPersonalizar);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
     }
     
     @FXML
     public void cargarPantallaPrincipiante() {
         fxRoot.setCenter(pantallaPrincipiante);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
 
     }
 
     @FXML
     public void cargarPantallaDificil() {
         fxRoot.setCenter(pantallaDificil);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
 
     }
-
+    
+    //https://www.youtube.com/watch?v=JwcyxuKko_M&t=660s
+    
     @FXML
     public void cargarPantallaIntermedio() {
         fxRoot.setCenter(pantallaIntermedio);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
     }
     
     public void clickInicio() {

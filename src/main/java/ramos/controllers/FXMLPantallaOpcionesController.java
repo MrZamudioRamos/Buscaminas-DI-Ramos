@@ -26,6 +26,9 @@ public class FXMLPantallaOpcionesController implements Initializable {
         this.principal = principal;
     }
     
+    public void clickAtrasOpciones(){
+        principal.cargarPantallaMenu();
+    }
     
     public void clickPorDefecto(){
         principal.cargarPantallaElegir();
