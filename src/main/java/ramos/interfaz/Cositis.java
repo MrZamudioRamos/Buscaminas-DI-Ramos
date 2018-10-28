@@ -16,39 +16,39 @@ import javafx.scene.input.MouseEvent;
  * @author Ricardo
  */
 public class Cositis {
-    public static ImageView createImageView() {
-        Image image = imageRefresher.buildImage("/images/Square.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(SQUARESIZE);
-        imageView.setFitHeight(SQUARESIZE);
-        imageView.setSmooth(true);
-        return imageView;
-    }
-
-    /**
-     * Create and set up a button
-     *
-     * @param image
-     * @return
-     */
-    private Button createSmileyButton(Image image) {
-        Button button = new Button();
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        button.setGraphic(imageView);
-
-        button.setOnMouseClicked((MouseEvent event)
-                -> {
-                    if (event.getButton() == MouseButton.PRIMARY) {
-                        executor.execute(()
-                                -> {
-                            model.resetBoard();
-                            modelTimer.restart();
-                        });
-                    }
-                });
-        return button;
-    }
+//    public static ImageView createImageView() {
+//        Image image = imageRefresher.buildImage("/images/Square.png");
+//        ImageView imageView = new ImageView(image);
+//        imageView.setFitWidth(SQUARESIZE);
+//        imageView.setFitHeight(SQUARESIZE);
+//        imageView.setSmooth(true);
+//        return imageView;
+//    }
+//
+//    /**
+//     * Create and set up a button
+//     *
+//     * @param image
+//     * @return
+//     */
+//    private Button createSmileyButton(Image image) {
+//        Button button = new Button();
+//        ImageView imageView = new ImageView(image);
+//        imageView.setFitWidth(25);
+//        imageView.setFitHeight(25);
+//        button.setGraphic(imageView);
+//
+//        button.setOnMouseClicked((MouseEvent event)
+//                -> {
+//                    if (event.getButton() == MouseButton.PRIMARY) {
+//                        executor.execute(()
+//                                -> {
+//                            model.resetBoard();
+//                            modelTimer.restart();
+//                        });
+//                    }
+//                });
+//        return button;
+//    }
 
 }

@@ -54,16 +54,16 @@ public class PaneConstructor {
 
         for (int i = 0; i < model.getTablero().size(); i++) {
             for (int j = 0; j < model.getTablero().get(i).size(); j++) {
-                Node n = GUI.createImageView();
-                gPane.add(n, column++, row);
-                GUI.getCaseNodes().get(i).add(n);
+//                Node n = GUI.createImageView();
+//                gPane.add(n, column++, row);
+//                GUI.getCaseNodes().get(i).add(n);
 
                 //When reaching end of a row
                 if (column > model.getTablero().get(row).size() - 1) {
                     column = 0;
                     row++;
                 }
-                n.setOnMouseClicked(new PersonalizarEventHandler(model, i, j, executor));
+//                n.setOnMouseClicked(new PersonalizarEventHandler(model, i, j, executor));
             }
         }
         gPane.setBorder(Border.EMPTY);
@@ -112,10 +112,10 @@ public class PaneConstructor {
         for (int i = 0; i < pyramid.size(); i++) {
             for (int j = 0; j < pyramid.get(i).size(); j++) {
                 Polygon p = pyramid.get(i).get(j);
-                p.setOnMouseClicked(new PersonalizarEventHandler(model, i, j, executor));
-                borderPane.getChildren().add(p);
-                p.setFill(new ImagePattern(GUI.createImageView().getImage())); // Todo maybe change here
-                GUI.getCaseNodes().get(i).add(p);
+//                p.setOnMouseClicked(new PersonalizarEventHandler(model, i, j, executor));
+//                borderPane.getChildren().add(p);
+//                p.setFill(new ImagePattern(GUI.createImageView().getImage())); // Todo maybe change here
+//                GUI.getCaseNodes().get(i).add(p);
             }
         }
         return borderPane;
