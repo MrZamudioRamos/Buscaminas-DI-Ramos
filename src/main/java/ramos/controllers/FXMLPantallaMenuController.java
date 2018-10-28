@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -22,6 +23,9 @@ public class FXMLPantallaMenuController implements Initializable {
     
     @FXML
     private Rectangle Icon;
+    
+    @FXML 
+    private AnchorPane anchor;
 
     private FXMLPantallaPrincipalController principal;
 
