@@ -44,6 +44,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private FXMLPantallaElegirController elegirController;
     private AnchorPane pantallaDificil;
     private FXMLPantallaDificilController dificilController;
+    private AnchorPane pantallaJuegoPersonalizado;
+    private FXMLPantallaDificilController juegoPersonalizadoController;
     
     //PRECARGAR PANTALLAS
     
@@ -181,6 +183,25 @@ public class FXMLPantallaPrincipalController implements Initializable {
     }
     
     @FXML
+    public void precargarPantallaJuegoPersonalizado() {
+        
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaJuegoPersonalizado.fxml"));
+            pantallaJuegoPersonalizado = loaderMenu.load();
+            juegoPersonalizadoController
+                    = loaderMenu.getController();
+
+            juegoPersonalizadoController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaJuegoPersonalizadoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
     public void cargarPantallaMenu() {
         fxMenu.setVisible(false);
         fxRoot.setCenter(pantallaMenu);
@@ -206,18 +227,21 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     public void cargarPantallaPrincipiante() {
         fxRoot.setCenter(pantallaPrincipiante);
-
     }
 
     @FXML
     public void cargarPantallaDificil() {
         fxRoot.setCenter(pantallaDificil);
-
     }
 
     @FXML
     public void cargarPantallaIntermedio() {
         fxRoot.setCenter(pantallaIntermedio);
+    }
+    
+    @FXML
+    public void cargarPantallaJuegoPersonalizado() {
+        fxRoot.setCenter(pantallaJuegoPersonalizado);
     }
     
     public void clickInicio() {
@@ -245,6 +269,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         precargarPantallaIntermedio();
         precargarPantallaPersonalizar();
         precargarPantallaPrincipiante();
+        //precargarPantallaJuegoPersonalizado();
         cargarPantallaMenu();
     }
 }
