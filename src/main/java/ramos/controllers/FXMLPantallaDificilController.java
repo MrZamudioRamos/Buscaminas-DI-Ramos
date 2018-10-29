@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
  * FXML Controller class
@@ -29,9 +30,13 @@ public class FXMLPantallaDificilController implements Initializable {
     }
     
     public void rellenar(){
+        int cont = 0;
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 21; j++) {
-                fxGridPaneMinasDificil.add(new Button(), i, j);
+                Button b = new Button();
+                b.setMinSize(24,25);
+                fxGridPaneMinasDificil.add(b, i, j);
+                
             }
         }
     }

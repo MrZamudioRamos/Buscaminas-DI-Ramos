@@ -9,14 +9,21 @@ import ramos.clases.Tablero;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
@@ -36,6 +43,62 @@ public class PaneConstructor {
      * @param executor Service launching the imageRefresher
      * @return
      */
+    public static void createButtonGrid(GridPane grid, int X, int Y) {
+        // https://stackoverflow.com/a/35345799
+        for (int rowIndex = 0; rowIndex < grid.impl_getRowCount(); rowIndex++) {
+            RowConstraints rc = new RowConstraints();
+            rc.setVgrow(Priority.ALWAYS); // allow row to grow
+            rc.setFillHeight(true); // ask nodes to fill height for row
+            // other settings as needed...
+            grid.getRowConstraints().add(rc);
+        }
+        for (int colIndex = 0; colIndex < grid.impl_getColumnCount(); colIndex++) {
+            ColumnConstraints cc = new ColumnConstraints();
+            cc.setHgrow(Priority.ALWAYS); // allow column to grow
+            cc.setFillWidth(true); // ask nodes to fill space for column
+            // other settings as needed...
+            grid.getColumnConstraints().add(cc);
+        }
+
+        // TODO: function is to long. Can't do static...
+        Function<Button, Button> mouseClicked = it -> {
+            it.setOnMouseClicked(e -> {
+                if (e.getButton().equals(MouseButton.SECONDARY)) {
+//                    markAsMine((Button) e.getSource());
+                } else {
+//                    openCell((Button) e.getSource());
+                }
+            });
+            return it;
+        };
+
+        Function<Button, Button> mouseOn = it -> {
+            it.setOnMouseMoved(e -> ((Button) e.getSource()).setStyle("-fx-text-fill: rgba(0,0,0,0.29);"));
+            return it;
+        };
+
+//        Function<Button, Button> mouseOff = it -> {
+//            it.setOnMouseExited(e-> ((Button)e.getSource()).setStyle("-fx-text-fill: rgb(0,0,0);") );
+//            return it;
+//        };
+        // Slightly shorter/cleaner version (like above commented code)
+        UnaryOperator<Button> mouseOff = it -> {
+            it.setOnMouseExited(e -> ((Button) e.getSource()).setStyle("-fx-text-fill: rgb(0,0,0);"));
+            return it;
+        };
+
+        Function<Button, Button> mouseHover = mouseOn.andThen(mouseOff);  //Same as: it-> mouseOff.apply( mouseOn.apply(it) );
+
+        // shorten version
+        grid.getChildren().addAll(
+//                game.stream()
+//                        .map(Util::createButton)
+//                        .map(mouseClicked)
+//                        .map(mouseHover)
+//                        .collect(Collectors.toList())
+        );
+    
+    }
     public static GridPane crearGridPane(Tablero model, ExecutorService executor) {
         return buildGridPane(model, executor);
     }
