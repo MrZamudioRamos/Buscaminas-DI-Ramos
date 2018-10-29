@@ -63,23 +63,6 @@ public class FXMLPantallaPrincipianteController implements Initializable {
      * Initializes the controller class.
      */
     
-//    public void rellenar(){
-//        for (int i = 0; i < 8; i++) {
-//            for (int j = 0; j < 8; j++) {
-//                Button b = new Button();
-//                b.setMinSize(30, 20);
-//                b.setOnAction(new EventHandler<ActionEvent>(){
-//                    public void handle(ActionEvent event){
-//                        
-//                        
-//                    }
-//                    
-//                });
-//                
-//                fxGridPaneMinasPrincipiante.add(b, i, j);
-//            }
-//        }
-//    }
     
     public void Tablero(){
     Juego game = new Juego();

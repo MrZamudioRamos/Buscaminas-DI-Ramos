@@ -31,6 +31,10 @@ public class Juego {
                     @Override
                     public void handle(ActionEvent event) {
                         System.out.println("row: "+fila +" col: "+columna);
+                        tablero[columna][fila].setDisable(true);
+                        tablero[columna][fila].setVisible(false);
+                        
+                        
                         
                     }
                 });
