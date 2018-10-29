@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -18,6 +19,9 @@ import javafx.scene.control.Button;
  */
 public class FXMLPantallaIntermedioController implements Initializable {
     private FXMLPantallaPrincipalController principal;
+    
+    @FXML
+    protected GridPane fxGridPaneMinasIntermedio;
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -35,6 +39,14 @@ public class FXMLPantallaIntermedioController implements Initializable {
         principal.cargarPantallaElegir();
     }
     
+    public void rellenar(){
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                fxGridPaneMinasIntermedio.add(new Button(), i, j);
+            }
+        }
+    }
+    
     @FXML
     private Button btn_cara2;
     /**
@@ -42,7 +54,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        rellenar();
     }    
     
 }

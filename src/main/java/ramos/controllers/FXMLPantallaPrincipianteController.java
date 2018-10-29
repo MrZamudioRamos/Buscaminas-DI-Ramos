@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 
 /**
@@ -19,8 +21,23 @@ import javafx.scene.shape.Circle;
  */
 public class FXMLPantallaPrincipianteController implements Initializable {
     
+    @FXML
+    public Label fxLabelNumeroMinasPrincipiante;
+    
+    @FXML
+    protected GridPane fxGridPaneMinasPrincipiante;
+    
     private FXMLPantallaPrincipalController principal;
+    private FXMLPantallaElegirController elegir;
 
+    public Label getFxLabelNumeroMinasPrincipiante() {
+        return fxLabelNumeroMinasPrincipiante;
+    }
+
+    public void setFxLabelNumeroMinasPrincipiante(Label fxLabelNumeroMinasPrincipiante) {
+        this.fxLabelNumeroMinasPrincipiante = fxLabelNumeroMinasPrincipiante;
+    }
+    
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
     }
@@ -37,14 +54,21 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         
     }
     
-    @FXML
-    private Circle btn_cara;
     /**
      * Initializes the controller class.
      */
+    
+    public void rellenar(){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                fxGridPaneMinasPrincipiante.add(new Button(), i, j);
+            }
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        rellenar();
     }    
     
 }

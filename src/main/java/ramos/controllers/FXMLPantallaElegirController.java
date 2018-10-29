@@ -18,6 +18,7 @@ import javafx.scene.control.RadioButton;
  */
 public class FXMLPantallaElegirController implements Initializable {
     private FXMLPantallaPrincipalController principal;
+    private FXMLPantallaPrincipianteController principiante;
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -28,33 +29,42 @@ public class FXMLPantallaElegirController implements Initializable {
     }
     
     @FXML
-    private RadioButton fxElegirFacil;
+    public RadioButton fxElegirFacil;
     
     @FXML
-    private RadioButton fxElegirMedio;
+    public RadioButton fxElegirMedio;
     
     @FXML
-    private RadioButton fxElegirDificil;
+    public RadioButton fxElegirDificil;
     
     @FXML
-    private RadioButton fxElegirGrande;
+    public RadioButton fxElegirGrande;
     
     @FXML
-    private RadioButton fxElegirMediano;
+    public RadioButton fxElegirMediano;
     
     @FXML
-    private RadioButton fxElegirPequeño;
+    public RadioButton fxElegirPequeño;
     
     
-    public void clickSalirElegir(){
+    public void clickSalirElegir() {
+        dameMinas();
         if (fxElegirPequeño.isSelected()) {
+            principal.precargarPantallaPrincipiante();
             principal.cargarPantallaPrincipiante();
-        }else if (fxElegirMediano.isSelected()) {
+        } else if (fxElegirMediano.isSelected()) {
             principal.cargarPantallaIntermedio();
-        }else if (fxElegirGrande.isSelected()){
+        } else if (fxElegirGrande.isSelected()) {
             principal.cargarPantallaDificil();
         }
-        
+    }
+    
+    public void dameMinas(){
+        if (fxElegirFacil.isSelected()) {
+        }else if (fxElegirMedio.isSelected()) {
+        }else if (fxElegirDificil.isSelected()){
+           
+        }
     }
     
     public void clickAtrasElegir(){
@@ -68,7 +78,7 @@ public class FXMLPantallaElegirController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     }    
     
 }
