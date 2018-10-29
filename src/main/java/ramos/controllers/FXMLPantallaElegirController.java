@@ -18,8 +18,12 @@ import ramos.clases.Juego;
  * @author Ricardo
  */
 public class FXMLPantallaElegirController implements Initializable {
+
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaPrincipianteController principiante;
+    private FXMLPantallaIntermedioController intermedio;
+    private FXMLPantallaDificilController dificil;
+    
     Juego j = new Juego();
 
     public FXMLPantallaPrincipalController getPrincipal() {
@@ -29,26 +33,49 @@ public class FXMLPantallaElegirController implements Initializable {
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
         this.principal = principal;
     }
-    
+
+    public FXMLPantallaPrincipianteController getPrincipiante() {
+        return principiante;
+    }
+
+    public void setPrincipiante(FXMLPantallaPrincipianteController principiante) {
+        this.principiante = principiante;
+    }
+
+    public FXMLPantallaIntermedioController getIntermedio() {
+        return intermedio;
+    }
+
+    public void setIntermedio(FXMLPantallaIntermedioController intermedio) {
+        this.intermedio = intermedio;
+    }
+
+    public FXMLPantallaDificilController getDificil() {
+        return dificil;
+    }
+
+    public void setDificil(FXMLPantallaDificilController dificil) {
+        this.dificil = dificil;
+    }
+
     @FXML
     public RadioButton fxElegirFacil;
-    
+
     @FXML
     public RadioButton fxElegirMedio;
-    
+
     @FXML
     public RadioButton fxElegirDificil;
-    
+
     @FXML
     public RadioButton fxElegirGrande;
-    
+
     @FXML
     public RadioButton fxElegirMediano;
-    
+
     @FXML
     public RadioButton fxElegirPequeño;
-    
-    
+
     public String Tablero() {
         String mines = null;
         if (fxElegirPequeño.isSelected()) {
@@ -82,54 +109,49 @@ public class FXMLPantallaElegirController implements Initializable {
         }
         return mines;
     }
-    
+
     public int darMinas() {
         int mines = 0;
         if (fxElegirPequeño.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 12;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 16;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 21;
-//                j.sortear(mines);
-
+                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
             }
         } else if (fxElegirMediano.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 51;
-//                j.sortear(mines);
-
+                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 64;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 85;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
             }
 
         } else if (fxElegirGrande.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 96;
-//                j.sortear(mines);
+               j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 120;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 160;
-//                j.sortear(mines);
+                j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
             }
         }
         return mines;
     }
-    
-    
-
 
     public void clickSalirElegir() {
         if (fxElegirPequeño.isSelected()) {
@@ -140,20 +162,17 @@ public class FXMLPantallaElegirController implements Initializable {
             principal.cargarNuevaPantallaDificil();
         }
     }
-    
-    
-    public void clickAtrasElegir(){
+
+    public void clickAtrasElegir() {
         principal.cargarPantallaOpciones();
     }
-    
-    
-            
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
-    }    
-    
+
+    }
+
 }

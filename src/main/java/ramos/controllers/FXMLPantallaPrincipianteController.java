@@ -25,29 +25,31 @@ import ramos.clases.Temporizador;
  * @author Ricardo
  */
 public class FXMLPantallaPrincipianteController implements Initializable {
+
+    Juego game = new Juego();
     
     @FXML
     public Label fxLabelNumeroMinasPrincipiante;
-    
+
     @FXML
     protected GridPane fxGridPaneMinasPrincipiante;
-    
-    private int rows=8, col=8;
+
+    private final int rows = 8;
+    private final int col = 8;
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaElegirController elegir;
 
     @FXML
     protected Text fxText;
-    
+
     public Label getFxLabelNumeroMinasPrincipiante() {
         return fxLabelNumeroMinasPrincipiante;
     }
-    
 
     public void setFxLabelNumeroMinasPrincipiante(Label fxLabelNumeroMinasPrincipiante) {
         this.fxLabelNumeroMinasPrincipiante = fxLabelNumeroMinasPrincipiante;
     }
-    
+
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
     }
@@ -55,37 +57,35 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
         this.principal = principal;
     }
-    
-    public void clickSalirPrincipiante(){
+
+    public void clickSalirPrincipiante() {
         principal.cargarPantallaElegir();
     }
-    
-     public void start(){
+
+    public void start() {
         Temporizador temp = new Temporizador();
         temp.setSeconds(0);
         temp.time(fxText);
         temp.start();
     }
-     
-    public void clickReiniciarPrincipiante(){
+
+    public void clickReiniciarPrincipiante() {
         start();
     }
-    
+
     /**
      * Initializes the controller class.
+     * @return 
      */
-    
-    
-    public void Tablero(){
-    Juego game = new Juego();
-    
-    game.rellenar(fxGridPaneMinasPrincipiante, rows, col);
-    
+    public Button[][] Tablero() {
+
+        return game.rellenar(fxGridPaneMinasPrincipiante, rows, col);
+
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Tablero();
-    }    
-    
+    }
+
 }
