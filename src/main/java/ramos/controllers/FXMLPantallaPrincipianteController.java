@@ -62,7 +62,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Button b = new Button();
-                b.setMinSize(20, 20);
+                b.setMinSize(30, 20);
                 fxGridPaneMinasPrincipiante.add(b, i, j);
             }
         }
