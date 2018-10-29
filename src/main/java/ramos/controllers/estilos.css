@@ -1,5 +1,5 @@
 .casilla {
-    -fx-background-color: blueviolet;
+    -fx-background-color: blue;
     
     -fx-min-width: 35px;
     -fx-max-width: 35px;
@@ -7,18 +7,18 @@
     -fx-min-height: 35px;
     -fx-max-height: 35px;
     
-	-fx-border-color: #d0d0d0 #b0b0b0 #b0b0b0 #d0d0d0;
+	-fx-border-color: #ffff33 #ffff33 #ffff33 #ffff33;
     -fx-border-width: 3;
     
     -fx-border-insets: 1px;
 }
 
 .casilla:hover {
-    -fx-background-color: #d0d0d0;
+    -fx-background-color: #ff3333;
 }
 
 .casilla:disabled {
-	-fx-border-color: #505050;
+    -fx-border-color: #33ffff;
     -fx-border-width: 0;
 }
 

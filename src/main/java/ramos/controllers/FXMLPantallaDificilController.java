@@ -46,7 +46,7 @@ public class FXMLPantallaDificilController implements Initializable {
     
     public void Tablero(){
     Juego game = new Juego();   
-    game.rellenar(fxGridPaneMinasDificil, rows, col);
+   // game.rellenar(fxGridPaneMinasDificil, rows, col);
     }
 
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
@@ -72,7 +72,7 @@ public class FXMLPantallaDificilController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Tablero();
+        //Tablero();
     }
 
 }

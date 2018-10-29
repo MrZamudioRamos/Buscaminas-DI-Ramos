@@ -92,7 +92,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
     private int ancho = 16;
     private int alto = 16;
     private int minas = 16;
-    private int vidas = 3;
+    private int vidas = 1;
 
     public int getRows() {
         return rows;
@@ -164,7 +164,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
     
     Image imgBandera = new Image("/images/bandera.png");
-
+    
     public void juegoNuevo(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
@@ -313,7 +313,6 @@ public class FXMLPantallaIntermedioController implements Initializable {
             }
         }
     }
-
     /**
      * Initializes the controller class.
      */

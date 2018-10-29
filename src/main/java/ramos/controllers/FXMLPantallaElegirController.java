@@ -116,38 +116,38 @@ public class FXMLPantallaElegirController implements Initializable {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 12;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 16;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 21;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             }
         } else if (fxElegirMediano.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 51;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 64;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 85;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             }
 
         } else if (fxElegirGrande.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 96;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 120;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 160;
-                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
+//                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             }
         }
         return mines;
