@@ -47,15 +47,48 @@ public class FXMLPantallaElegirController implements Initializable {
     public RadioButton fxElegirPequeño;
     
     
-    public void clickSalirElegir() {
-        dameMinas();
+    public String Tablero() {
+        String mines = null;
         if (fxElegirPequeño.isSelected()) {
-            principal.precargarPantallaPrincipiante();
-            principal.cargarPantallaPrincipiante();
+
+            if (fxElegirFacil.isSelected()) {
+                mines = "12";
+            } else if (fxElegirMedio.isSelected()) {
+                mines = "16";
+            } else if (fxElegirDificil.isSelected()) {
+                mines = "21";
+            }
         } else if (fxElegirMediano.isSelected()) {
-            principal.cargarPantallaIntermedio();
+
+            if (fxElegirFacil.isSelected()) {
+                mines = "51";
+            } else if (fxElegirMedio.isSelected()) {
+                mines = "64";
+            } else if (fxElegirDificil.isSelected()) {
+                mines = "85";
+            }
+
         } else if (fxElegirGrande.isSelected()) {
-            principal.cargarPantallaDificil();
+
+            if (fxElegirFacil.isSelected()) {
+                mines = "96";
+            } else if (fxElegirMedio.isSelected()) {
+                mines = "120";
+            } else if (fxElegirDificil.isSelected()) {
+                mines = "160";
+            }
+        }
+        return mines;
+    }
+
+
+    public void clickSalirElegir() {
+        if (fxElegirPequeño.isSelected()) {
+            principal.cargarNuevaPantallaPrincipiante();
+        } else if (fxElegirMediano.isSelected()) {
+            principal.cargarNuevaPantallaIntermedio();
+        } else if (fxElegirGrande.isSelected()) {
+            principal.cargarNuevaPantallaDificil();
         }
     }
     

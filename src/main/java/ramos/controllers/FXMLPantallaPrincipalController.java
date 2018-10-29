@@ -238,9 +238,26 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinWidth(600);
 
     }
+    @FXML
+    public void cargarNuevaPantallaPrincipiante() {
+        String mina = elegirController.Tablero();
+        principianteController.fxLabelNumeroMinasPrincipiante.setText(mina);
+        fxRoot.setCenter(pantallaPrincipiante);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
+
+    }
+    
 
     @FXML
     public void cargarPantallaDificil() {
+        fxRoot.setCenter(pantallaDificil);
+    }
+    
+    @FXML
+    public void cargarNuevaPantallaDificil() {
+        String mina = elegirController.Tablero();
+        dificilController.fxLabelNumeroMinasDificil.setText(mina);
         fxRoot.setCenter(pantallaDificil);
     }
     
@@ -252,6 +269,16 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
     }
+    @FXML
+    public void cargarNuevaPantallaIntermedio() {
+        String mina = elegirController.Tablero();
+        intermedioController.fxLabelNumeroMinasIntermedio.setText(mina);
+        fxRoot.setCenter(pantallaIntermedio);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
+    }
+    
+    
     
     public void clickInicio() {
 

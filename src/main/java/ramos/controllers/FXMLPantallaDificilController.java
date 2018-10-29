@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -24,6 +25,9 @@ public class FXMLPantallaDificilController implements Initializable {
     
     @FXML
     protected GridPane fxGridPaneMinasDificil;
+    
+    @FXML
+    protected Label fxLabelNumeroMinasDificil;
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;

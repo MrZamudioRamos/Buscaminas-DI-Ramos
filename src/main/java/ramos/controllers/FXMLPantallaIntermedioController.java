@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -23,6 +24,9 @@ public class FXMLPantallaIntermedioController implements Initializable {
 
     @FXML
     protected GridPane fxGridPaneMinasIntermedio;
+    
+    @FXML
+    protected Label fxLabelNumeroMinasIntermedio;
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -32,6 +36,12 @@ public class FXMLPantallaIntermedioController implements Initializable {
         this.principal = principal;
     }
 
+    public void setFxLabelNumeroMinasIntermedio(Label fxLabelNumeroMinasIntermedio) {
+        this.fxLabelNumeroMinasIntermedio = fxLabelNumeroMinasIntermedio;
+    }
+    
+    
+    
     public void clickReiniciarIntermedio() {
 
     }
