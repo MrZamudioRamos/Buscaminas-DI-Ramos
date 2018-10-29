@@ -45,19 +45,28 @@ public class Juego {
         return tablero;
     }
 
-    public void sortear(Button[][] tablero, int numMinas, int tamanio) {
+    public void minasAleatorias(Button[][] tablero, int numMinas, int tamanio) {
+        String mina = "mina";
         for (int i = 0; i < numMinas; i++) {
-            int xCor = (int) (Math.random() * (tamanio- 1)); //xCor variable auxiliar de coordenada X
+            int xCor = (int) (Math.random() * (tamanio - 1)); //xCor variable auxiliar de coordenada X
             int yCor = (int) (Math.random() * (tamanio - 1)); //yCor variable auxiliar de coordenada Y
             //Condicion que verifica que no se repita una mina en el mismo lugar
-//            if (tablero[xCor][yCor] != null) {
-//                tablero[xCor][yCor] = ;
-//            } else {
-//                i--;
-//            }
+            if (tablero[xCor][yCor] == null) {
+                tablero[xCor][yCor].setText(mina);
+            } else {
+                i--;
+            }
 
         }
     }
+
+//    public boolean hasMina(int x, int y ) {
+//        ok;
+//
+//        if (x,y == EstadoDiferente.) {
+//
+//        }
+//    }
 
     public int parsearMinas(String minas) {
 

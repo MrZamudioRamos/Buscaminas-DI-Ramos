@@ -23,7 +23,7 @@ public class FXMLPantallaElegirController implements Initializable {
     private FXMLPantallaPrincipianteController principiante;
     private FXMLPantallaIntermedioController intermedio;
     private FXMLPantallaDificilController dificil;
-    
+
     Juego j = new Juego();
 
     public FXMLPantallaPrincipalController getPrincipal() {
@@ -116,38 +116,38 @@ public class FXMLPantallaElegirController implements Initializable {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 12;
-                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 16;
-                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 21;
-                j.sortear(principiante.Tablero(),Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(principiante.getFxLabelNumeroMinasPrincipiante().toString()), mines);
             }
         } else if (fxElegirMediano.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 51;
-                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 64;
-                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 85;
-                j.sortear(principiante.Tablero(),Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(intermedio.getFxLabelNumeroMinasIntermedio().toString()), mines);
             }
 
         } else if (fxElegirGrande.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 96;
-               j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 120;
-                j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 160;
-                j.sortear(principiante.Tablero(),Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()),mines);
+                j.minasAleatorias(principiante.Tablero(), Integer.parseInt(dificil.getFxLabelNumeroMinasDificil().toString()), mines);
             }
         }
         return mines;
@@ -157,7 +157,8 @@ public class FXMLPantallaElegirController implements Initializable {
         if (fxElegirPequeño.isSelected()) {
             principal.cargarNuevaPantallaPrincipiante();
         } else if (fxElegirMediano.isSelected()) {
-            principal.cargarNuevaPantallaIntermedio();
+//            principal.cargarNuevaPantallaIntermedio();
+            principal.cargarPantallaIntermedio();
         } else if (fxElegirGrande.isSelected()) {
             principal.cargarNuevaPantallaDificil();
         }

@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import ramos.core.NumeroDeVidasFueraDeRangoException;
+import ramos.core.Utilidades;
 
 /**
  * FXML Controller class
@@ -29,6 +31,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     private MenuBar fxMenu;
+
+    private FXMLPantallaIntermedioController intermedio;
 
     private AnchorPane pantallaOpciones;
     private FXMLPantallaOpcionesController opcionesController;
@@ -46,12 +50,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private FXMLPantallaDificilController dificilController;
     private AnchorPane pantallaJuegoPersonalizado;
     private FXMLPantallaDificilController juegoPersonalizadoController;
-    
+
     //PRECARGAR PANTALLAS
-    
     @FXML
     public void precargarPantallaMenu() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -67,10 +70,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaOpciones() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -86,10 +89,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaOpcionesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaPersonalizar() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -105,10 +108,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaPersonalizarController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaPrincipiante() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -124,10 +127,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaPrincipianteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaDificil() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -143,10 +146,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaDificilController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaElegir() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -162,10 +165,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaElegirController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaIntermedio() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -181,10 +184,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaJuegoPersonalizado() {
-        
+
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
                     getClass().getResource(
@@ -200,7 +203,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaJuegoPersonalizadoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void cargarPantallaMenu() {
         fxMenu.setVisible(false);
@@ -211,7 +214,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaOpciones() {
-        
+
         fxRoot.setCenter(pantallaOpciones);
         fxRoot.setMinHeight(500);
         fxRoot.setMinWidth(600);
@@ -230,7 +233,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
     }
-    
+
     @FXML
     public void cargarPantallaPrincipiante() {
         fxRoot.setCenter(pantallaPrincipiante);
@@ -238,6 +241,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinWidth(600);
 
     }
+
     @FXML
     public void cargarNuevaPantallaPrincipiante() {
         String mina = elegirController.Tablero();
@@ -247,39 +251,43 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinWidth(600);
 
     }
-    
 
     @FXML
     public void cargarPantallaDificil() {
         fxRoot.setCenter(pantallaDificil);
     }
-    
+
     @FXML
     public void cargarNuevaPantallaDificil() {
         String mina = elegirController.Tablero();
         dificilController.fxLabelNumeroMinasDificil.setText(mina);
         fxRoot.setCenter(pantallaDificil);
     }
-    
+
     //https://www.youtube.com/watch?v=JwcyxuKko_M&t=660s
-    
     @FXML
     public void cargarPantallaIntermedio() {
         fxRoot.setCenter(pantallaIntermedio);
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
     }
+
     @FXML
     public void cargarNuevaPantallaIntermedio() {
-        String mina = elegirController.Tablero();
-        intermedioController.fxLabelNumeroMinasIntermedio.setText(mina);
+        try {
+            //String mina = elegirController.Tablero();
+            //intermedioController.fxLabelNumeroMinasIntermedio.setText(mina);
+// intermedio.pane.getChildren().add(Utilidades.createContent());
+    
+            intermedio.juegoNuevo(intermedio.getAncho(),intermedio.getAlto(),intermedio.getMinas(), intermedio.getVidas());
+        } catch (NumeroDeVidasFueraDeRangoException ex) {
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         fxRoot.setCenter(pantallaIntermedio);
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
     }
-    
-    
-    
+
     public void clickInicio() {
 
     }

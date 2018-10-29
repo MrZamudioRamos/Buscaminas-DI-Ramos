@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ramos.clases;
+package ramos.core;
 
 /**
  *
  * @author Ricardo
  */
-public enum EstadoDiferente {
-    
-    NODESCUBIERTO,
-    DESCUBIERTO,
-    BANDERA,
-    VACÍO,
-    ACTIVADO,
-    ATRAPADO,
+public class DemasiadasMinasException extends Exception {
+    public DemasiadasMinasException() {
+		super();
+	}
+	
+	public DemasiadasMinasException(String msg) {
+		super(msg);
+	}
 }
