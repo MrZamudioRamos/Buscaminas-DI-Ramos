@@ -80,6 +80,42 @@ public class FXMLPantallaElegirController implements Initializable {
         }
         return mines;
     }
+    
+    public int darMinas() {
+        int mines = 0;
+        if (fxElegirPequeño.isSelected()) {
+
+            if (fxElegirFacil.isSelected()) {
+                mines = 12;
+            } else if (fxElegirMedio.isSelected()) {
+                mines = 16;
+            } else if (fxElegirDificil.isSelected()) {
+                mines = 21;
+            }
+        } else if (fxElegirMediano.isSelected()) {
+
+            if (fxElegirFacil.isSelected()) {
+                mines = 51;
+            } else if (fxElegirMedio.isSelected()) {
+                mines = 64;
+            } else if (fxElegirDificil.isSelected()) {
+                mines = 85;
+            }
+
+        } else if (fxElegirGrande.isSelected()) {
+
+            if (fxElegirFacil.isSelected()) {
+                mines = 96;
+            } else if (fxElegirMedio.isSelected()) {
+                mines = 120;
+            } else if (fxElegirDificil.isSelected()) {
+                mines = 160;
+            }
+        }
+        return mines;
+    }
+    
+    
 
 
     public void clickSalirElegir() {

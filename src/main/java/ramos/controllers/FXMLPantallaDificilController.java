@@ -29,6 +29,11 @@ public class FXMLPantallaDificilController implements Initializable {
     @FXML
     protected Label fxLabelNumeroMinasDificil;
 
+    public Label getFxLabelNumeroMinasDificil() {
+        return fxLabelNumeroMinasDificil;
+    }
+    
+
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
     }

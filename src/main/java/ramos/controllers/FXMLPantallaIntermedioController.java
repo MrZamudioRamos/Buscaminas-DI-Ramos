@@ -28,6 +28,11 @@ public class FXMLPantallaIntermedioController implements Initializable {
     @FXML
     protected Label fxLabelNumeroMinasIntermedio;
 
+    public Label getFxLabelNumeroMinasIntermedio() {
+        return fxLabelNumeroMinasIntermedio;
+    }
+    
+
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
     }

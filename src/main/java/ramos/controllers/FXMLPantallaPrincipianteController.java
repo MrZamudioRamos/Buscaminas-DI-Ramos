@@ -32,6 +32,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public Label getFxLabelNumeroMinasPrincipiante() {
         return fxLabelNumeroMinasPrincipiante;
     }
+    
 
     public void setFxLabelNumeroMinasPrincipiante(Label fxLabelNumeroMinasPrincipiante) {
         this.fxLabelNumeroMinasPrincipiante = fxLabelNumeroMinasPrincipiante;
