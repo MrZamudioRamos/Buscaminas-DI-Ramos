@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import ramos.clases.Juego;
+import ramos.clases.Temporizador;
 
 /**
  * FXML Controller class
@@ -34,16 +35,6 @@ public class FXMLPantallaDificilController implements Initializable {
     
     @FXML
     protected Text fxText;
-    
-    int seconds = 0;
-    Timer myTimer = new Timer();
-    TimerTask task = new TimerTask() {
-            public void run() {
-                seconds++;
-                fxText.setText(""+seconds);
-            }
-        };
-
     public Label getFxLabelNumeroMinasDificil() {
         return fxLabelNumeroMinasDificil;
     }
@@ -67,7 +58,10 @@ public class FXMLPantallaDificilController implements Initializable {
     }
     
     public void start(){
-        myTimer.scheduleAtFixedRate(task, 1000, 1000); 
+        Temporizador temp = new Temporizador();
+        temp.setSeconds(0);
+        temp.time(fxText);
+        temp.start();
     }
     
     public void clickSalirDificil(){

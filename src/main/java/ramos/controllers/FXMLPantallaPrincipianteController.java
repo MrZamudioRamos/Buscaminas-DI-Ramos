@@ -15,7 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import ramos.clases.Juego;
+import ramos.clases.Temporizador;
 
 /**
  * FXML Controller class
@@ -34,6 +36,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaElegirController elegir;
 
+    @FXML
+    protected Text fxText;
+    
     public Label getFxLabelNumeroMinasPrincipiante() {
         return fxLabelNumeroMinasPrincipiante;
     }
@@ -55,8 +60,15 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         principal.cargarPantallaElegir();
     }
     
+     public void start(){
+        Temporizador temp = new Temporizador();
+        temp.setSeconds(0);
+        temp.time(fxText);
+        temp.start();
+    }
+     
     public void clickReiniciarPrincipiante(){
-        
+        start();
     }
     
     /**
