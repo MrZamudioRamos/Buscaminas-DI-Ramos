@@ -55,7 +55,6 @@ public class FXMLPantallaMenuController implements Initializable {
     }
 
     public void clickSalir() {
-
     }
 
     @Override
