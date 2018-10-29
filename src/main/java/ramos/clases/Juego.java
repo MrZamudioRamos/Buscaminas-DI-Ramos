@@ -4,6 +4,7 @@ import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import ramos.controllers.FXMLPantallaElegirController;
 
@@ -19,12 +20,15 @@ public class Juego {
     
     }
     
+    
     public void rellenar(GridPane pane,int rows, int col ){
         tablero = new Button[rows][col];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
+               ImageView im = new ImageView("/images/Square.png");
                 tablero[i][j] = new Button();
                 tablero[i][j].setMinSize(30, 20);
+                tablero[i][j].setGraphic(im);
                 int columna = i;
                 int fila = j;
                 tablero[i][j].setOnAction(new EventHandler<ActionEvent>(){
