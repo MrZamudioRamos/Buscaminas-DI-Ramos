@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ramos.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -23,6 +20,9 @@ public class FXMLPantallaMenuController implements Initializable {
     
     @FXML
     private Rectangle Icon;
+    
+    @FXML
+    private javafx.scene.control.Button closeButton;
     
     @FXML 
     private AnchorPane anchor;
@@ -55,6 +55,7 @@ public class FXMLPantallaMenuController implements Initializable {
     }
 
     public void clickSalir() {
+        Platform.exit();
     }
 
     @Override
