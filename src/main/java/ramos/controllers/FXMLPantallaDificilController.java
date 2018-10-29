@@ -34,7 +34,7 @@ public class FXMLPantallaDificilController implements Initializable {
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 21; j++) {
                 Button b = new Button();
-                b.setMinSize(24,25);
+                b.setMinSize(20,20);
                 fxGridPaneMinasDificil.add(b, i, j);
                 
             }

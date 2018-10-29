@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -61,7 +60,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void rellenar(){
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                fxGridPaneMinasPrincipiante.add(new Button(), i, j);
+                Button b = new Button();
+                b.setMinSize(20, 20);
+                fxGridPaneMinasPrincipiante.add(b, i, j);
             }
         }
     }

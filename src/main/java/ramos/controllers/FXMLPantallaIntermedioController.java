@@ -18,8 +18,9 @@ import javafx.scene.layout.GridPane;
  * @author Ricardo
  */
 public class FXMLPantallaIntermedioController implements Initializable {
+
     private FXMLPantallaPrincipalController principal;
-    
+
     @FXML
     protected GridPane fxGridPaneMinasIntermedio;
 
@@ -30,31 +31,34 @@ public class FXMLPantallaIntermedioController implements Initializable {
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
         this.principal = principal;
     }
-    
-    public void clickReiniciarIntermedio(){
-        
+
+    public void clickReiniciarIntermedio() {
+
     }
-    
-    public void clickSalirIntermedio(){
+
+    public void clickSalirIntermedio() {
         principal.cargarPantallaElegir();
     }
-    
-    public void rellenar(){
+
+    public void rellenar() {
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
-                fxGridPaneMinasIntermedio.add(new Button(), i, j);
+                Button b = new Button();
+                b.setMinSize(20, 20);
+                fxGridPaneMinasIntermedio.add(b, i, j);
             }
         }
     }
-    
+
     @FXML
     private Button btn_cara2;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         rellenar();
-    }    
-    
+    }
+
 }
