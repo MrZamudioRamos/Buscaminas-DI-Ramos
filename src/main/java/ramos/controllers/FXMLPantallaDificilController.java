@@ -7,12 +7,13 @@ package ramos.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+import javafx.scene.text.Text;
 import ramos.clases.Juego;
 
 /**
@@ -30,6 +31,18 @@ public class FXMLPantallaDificilController implements Initializable {
     
     @FXML
     protected Label fxLabelNumeroMinasDificil;
+    
+    @FXML
+    protected Text fxText;
+    
+    int seconds = 0;
+    Timer myTimer = new Timer();
+    TimerTask task = new TimerTask() {
+            public void run() {
+                seconds++;
+                fxText.setText(""+seconds);
+            }
+        };
 
     public Label getFxLabelNumeroMinasDificil() {
         return fxLabelNumeroMinasDificil;
@@ -41,10 +54,8 @@ public class FXMLPantallaDificilController implements Initializable {
     }
     
     public void Tablero(){
-    Juego game = new Juego();
-    
+    Juego game = new Juego();   
     game.rellenar(fxGridPaneMinasDificil, rows, col);
-    
     }
 
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
@@ -52,7 +63,11 @@ public class FXMLPantallaDificilController implements Initializable {
     }
     
     public void clickReiniciarDificil(){
-        
+       start();
+    }
+    
+    public void start(){
+        myTimer.scheduleAtFixedRate(task, 1000, 1000); 
     }
     
     public void clickSalirDificil(){
