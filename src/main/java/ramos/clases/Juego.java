@@ -48,7 +48,26 @@ public class Juego {
         }
     }
     
+    public void sortear(int numMinas, int tamano, Button[][] tablero) {
+    for (int i = 0; i < numMinas; i++) {
+      int xCor = (int) (Math.random() * (tamano - 1)); //xCor variable auxiliar de coordenada X
+//      int yCor = (int) (Math.random() * (tamano - 1)); //yCor variable auxiliar de coordenada Y
+//      //Condicion que verifica que no se repita una mina en el mismo lugar
+//      if (tablero[xCor][yCor] != 9) {
+//        tablero[xCor][yCor] = 9;
+//      } else {
+//        i--;
+      }
+
     
+  }
+    public int parsearMinas(String minas){
+        
+        int nMinas = Integer.parseInt(minas);
+                
+        return nMinas;
+        
+    }
     
     public void MeterMinas(){
     
@@ -56,11 +75,7 @@ public class Juego {
         FXMLPantallaElegirController elegir = new FXMLPantallaElegirController();
         
         int Minas = elegir.darMinas();
-        
-        
-        
-    
-    
+ 
     }
     
 }

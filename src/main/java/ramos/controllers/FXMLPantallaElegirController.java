@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
+import ramos.clases.Juego;
 
 /**
  * FXML Controller class
@@ -19,6 +20,7 @@ import javafx.scene.control.RadioButton;
 public class FXMLPantallaElegirController implements Initializable {
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaPrincipianteController principiante;
+    Juego j = new Juego();
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -87,29 +89,40 @@ public class FXMLPantallaElegirController implements Initializable {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 12;
+//                j.sortear(mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 16;
+//                j.sortear(mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 21;
+//                j.sortear(mines);
+
             }
         } else if (fxElegirMediano.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 51;
+//                j.sortear(mines);
+
             } else if (fxElegirMedio.isSelected()) {
                 mines = 64;
+//                j.sortear(mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 85;
+//                j.sortear(mines);
             }
 
         } else if (fxElegirGrande.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
                 mines = 96;
+//                j.sortear(mines);
             } else if (fxElegirMedio.isSelected()) {
                 mines = 120;
+//                j.sortear(mines);
             } else if (fxElegirDificil.isSelected()) {
                 mines = 160;
+//                j.sortear(mines);
             }
         }
         return mines;
