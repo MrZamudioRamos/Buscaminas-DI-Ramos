@@ -60,6 +60,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
         temp.setSeconds(0);
         temp.time(fxText);
         temp.start();
+        
     }
     
     public void clickReiniciarIntermedio() {
