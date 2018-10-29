@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import ramos.clases.Juego;
 
 /**
  * FXML Controller class
@@ -29,6 +30,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     @FXML
     protected GridPane fxGridPaneMinasPrincipiante;
     
+    private int rows=8, col=8;
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaElegirController elegir;
 
@@ -61,27 +63,34 @@ public class FXMLPantallaPrincipianteController implements Initializable {
      * Initializes the controller class.
      */
     
-    public void rellenar(){
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Button b = new Button();
-                b.setMinSize(30, 20);
-                b.setOnAction(new EventHandler<ActionEvent>(){
-                    public void handle(ActionEvent event){
-                        
-                        
-                    }
-                    
-                });
-                
-                fxGridPaneMinasPrincipiante.add(b, i, j);
-            }
-        }
+//    public void rellenar(){
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                Button b = new Button();
+//                b.setMinSize(30, 20);
+//                b.setOnAction(new EventHandler<ActionEvent>(){
+//                    public void handle(ActionEvent event){
+//                        
+//                        
+//                    }
+//                    
+//                });
+//                
+//                fxGridPaneMinasPrincipiante.add(b, i, j);
+//            }
+//        }
+//    }
+    
+    public void Tablero(){
+    Juego game = new Juego();
+    
+    game.rellenar(fxGridPaneMinasPrincipiante, rows, col);
+    
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rellenar();
+        Tablero();
     }    
     
 }

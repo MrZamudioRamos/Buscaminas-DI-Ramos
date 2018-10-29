@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+import ramos.clases.Juego;
 
 /**
  * FXML Controller class
@@ -22,6 +23,7 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 public class FXMLPantallaDificilController implements Initializable {
 
     private FXMLPantallaPrincipalController principal;
+    private int rows=21, col=21;
     
     @FXML
     protected GridPane fxGridPaneMinasDificil;
@@ -38,16 +40,11 @@ public class FXMLPantallaDificilController implements Initializable {
         return principal;
     }
     
-    public void rellenar(){
-        int cont = 0;
-        for (int i = 0; i < 21; i++) {
-            for (int j = 0; j < 21; j++) {
-                Button b = new Button();
-                b.setMinSize(20,20);
-                fxGridPaneMinasDificil.add(b, i, j);
-                
-            }
-        }
+    public void Tablero(){
+    Juego game = new Juego();
+    
+    game.rellenar(fxGridPaneMinasDificil, rows, col);
+    
     }
 
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
@@ -66,7 +63,7 @@ public class FXMLPantallaDificilController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rellenar();
+        Tablero();
     }
 
 }

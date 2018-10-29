@@ -128,13 +128,6 @@ public class FXMLPantallaElegirController implements Initializable {
         }
     }
     
-    public void dameMinas(){
-        if (fxElegirFacil.isSelected()) {
-        }else if (fxElegirMedio.isSelected()) {
-        }else if (fxElegirDificil.isSelected()){
-           
-        }
-    }
     
     public void clickAtrasElegir(){
         principal.cargarPantallaOpciones();

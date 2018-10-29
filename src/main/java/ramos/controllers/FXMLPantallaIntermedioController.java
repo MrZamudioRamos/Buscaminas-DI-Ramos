@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import ramos.clases.Juego;
 
 /**
  * FXML Controller class
@@ -21,6 +22,8 @@ import javafx.scene.layout.GridPane;
 public class FXMLPantallaIntermedioController implements Initializable {
 
     private FXMLPantallaPrincipalController principal;
+    
+    private int rows=16, col=16;
 
     @FXML
     protected GridPane fxGridPaneMinasIntermedio;
@@ -55,14 +58,11 @@ public class FXMLPantallaIntermedioController implements Initializable {
         principal.cargarPantallaElegir();
     }
 
-    public void rellenar() {
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
-                Button b = new Button();
-                b.setMinSize(20, 20);
-                fxGridPaneMinasIntermedio.add(b, i, j);
-            }
-        }
+    public void Tablero(){
+    Juego game = new Juego();
+    
+    game.rellenar(fxGridPaneMinasIntermedio, rows, col);
+    
     }
 
     @FXML
@@ -73,7 +73,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rellenar();
+        Tablero();
     }
 
 }
