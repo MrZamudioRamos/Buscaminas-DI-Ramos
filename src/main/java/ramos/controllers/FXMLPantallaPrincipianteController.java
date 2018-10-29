@@ -82,10 +82,15 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         return game.rellenar(fxGridPaneMinasPrincipiante, rows, col);
 
     }
+    
+    public void Game(){
+        game.DetectarMinas(rows, col);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Tablero();
+        //Game();
     }
 
 }
