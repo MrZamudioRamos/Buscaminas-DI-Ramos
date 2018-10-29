@@ -25,8 +25,8 @@ public class Juego {
             for (int j = 0; j < col; j++) {
                 tablero[i][j] = new Button();
                 tablero[i][j].setMinSize(30, 20);
-                int fila = i;
-                int columna = j;
+                int columna = i;
+                int fila = j;
                 tablero[i][j].setOnAction(new EventHandler<ActionEvent>(){
                     @Override
                     public void handle(ActionEvent event) {
@@ -34,14 +34,6 @@ public class Juego {
                         
                     }
                 });
-                //Button b = new Button();
-//                b.setMinSize(30, 20);
-//                b.setOnAction(new EventHandler<ActionEvent>(){
-//                    public void handle(ActionEvent event){
-//                        
-//                        
-//                    }
-//                });
                 
                 pane.add(tablero[i][j], i, j);
             }
