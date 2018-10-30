@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -17,7 +18,18 @@ import javafx.scene.control.TextField;
  * @author Ricardo
  */
 public class FXMLPantallaPersonalizarController implements Initializable {
-private FXMLPantallaPrincipalController principal;
+
+    private FXMLPantallaPrincipalController principal;
+
+    private FXMLPantallaJuegoPersonalizadoController personalizado;
+
+    public FXMLPantallaJuegoPersonalizadoController getPersonalizado() {
+        return personalizado;
+    }
+
+    public void setPersonalizado(FXMLPantallaJuegoPersonalizadoController personalizado) {
+        this.personalizado = personalizado;
+    }
 
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -28,41 +40,76 @@ private FXMLPantallaPrincipalController principal;
     }
     @FXML
     private TextField fxTextFieldAncho;
-    
+
     @FXML
     private TextField fxTextFieldAlto;
-    
-    public int getValorAncho(){
-        
+
+    @FXML
+    private RadioButton fxPersonalizarFacil;
+
+    @FXML
+    private RadioButton fxPersonalizarMedio;
+
+    @FXML
+    private RadioButton fxPersonalizarDificil;
+
+    public int getValorAncho() {
+
         int ancho = Integer.parseInt(fxTextFieldAncho.getText());
-        
+
         return ancho;
     }
-    
-    public int getValorAlto(){
-        
+
+    public int getValorAlto() {
+
         int alto = Integer.parseInt(fxTextFieldAlto.getText());
-        
+
         return alto;
     }
-    
-    public void clickJugar(){
-        
-        //principal.cargarPantallaJuegoPersonalizado();
+
+    public int darMinas() {
+        int mines = 0;
+
+        if (fxPersonalizarFacil.isSelected()) {
+            mines = 12;
+        } else if (fxPersonalizarMedio.isSelected()) {
+            mines = 16;
+        } else if (fxPersonalizarDificil.isSelected()) {
+            mines = 21;
+        }
+        return mines;
     }
-    
-    public void clickAtras(){
+
+    public String getDificultad() {
+        String mines = "";
+        if (fxPersonalizarFacil.isSelected()) {
+            mines = "12";
+        } else if (fxPersonalizarMedio.isSelected()) {
+            mines = "16";
+        } else if (fxPersonalizarDificil.isSelected()) {
+            mines = "21";
+        }
+        return mines;
+    }
+
+    public void clickJugar() {
+
+        principal.precargarPantallaJuegoPersonalizado();
+        principal.cargarPantallaJuegoPersonalizado();
+    }
+
+    public void clickAtras() {
+
         principal.cargarPantallaOpciones();
+
     }
-    
-    
-            
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

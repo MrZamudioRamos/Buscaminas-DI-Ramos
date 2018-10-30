@@ -76,8 +76,58 @@ public class FXMLPantallaElegirController implements Initializable {
     @FXML
     public RadioButton fxElegirPequeño;
 
+    public RadioButton getFxElegirFacil() {
+        return fxElegirFacil;
+    }
+
+    public void setFxElegirFacil(RadioButton fxElegirFacil) {
+        this.fxElegirFacil = fxElegirFacil;
+    }
+
+    public RadioButton getFxElegirMedio() {
+        return fxElegirMedio;
+    }
+
+    public void setFxElegirMedio(RadioButton fxElegirMedio) {
+        this.fxElegirMedio = fxElegirMedio;
+    }
+
+    public RadioButton getFxElegirDificil() {
+        return fxElegirDificil;
+    }
+
+    public void setFxElegirDificil(RadioButton fxElegirDificil) {
+        this.fxElegirDificil = fxElegirDificil;
+    }
+
+    public RadioButton getFxElegirGrande() {
+        return fxElegirGrande;
+    }
+
+    public void setFxElegirGrande(RadioButton fxElegirGrande) {
+        this.fxElegirGrande = fxElegirGrande;
+    }
+
+    public RadioButton getFxElegirMediano() {
+        return fxElegirMediano;
+    }
+
+    public void setFxElegirMediano(RadioButton fxElegirMediano) {
+        this.fxElegirMediano = fxElegirMediano;
+    }
+
+    public RadioButton getFxElegirPequeño() {
+        return fxElegirPequeño;
+    }
+
+    public void setFxElegirPequeño(RadioButton fxElegirPequeño) {
+        this.fxElegirPequeño = fxElegirPequeño;
+    }
+
     public String Tablero() {
+
         String mines = null;
+        
         if (fxElegirPequeño.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
@@ -110,8 +160,24 @@ public class FXMLPantallaElegirController implements Initializable {
         return mines;
     }
 
+    public String getDificultad() {
+        String mines = "";
+        if (fxElegirFacil.isSelected()) {
+            mines = "96";
+        } else if (fxElegirMedio.isSelected()) {
+            mines = "120";
+        } else if (fxElegirDificil.isSelected()) {
+            mines = "160";
+        } else {
+            mines = "96";
+        }
+        return mines;
+    }
+
     public int darMinas() {
+        
         int mines = 0;
+        
         if (fxElegirPequeño.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
@@ -157,7 +223,9 @@ public class FXMLPantallaElegirController implements Initializable {
         if (fxElegirPequeño.isSelected()) {
             principal.cargarNuevaPantallaPrincipiante();
         } else if (fxElegirMediano.isSelected()) {
-//            principal.cargarNuevaPantallaIntermedio();
+//           principal.cargarNuevaPantallaIntermedio();
+            
+            principal.precargarPantallaIntermedio(darMinas());
             principal.cargarPantallaIntermedio();
         } else if (fxElegirGrande.isSelected()) {
             principal.cargarNuevaPantallaDificil();

@@ -1,22 +1,6 @@
 package ramos.clases;
 
-import java.util.Random;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import ramos.controllers.FXMLPantallaElegirController;
-import ramos.core.Buscaminas;
-import ramos.core.Casilla;
-import ramos.core.DemasiadasMinasException;
-import ramos.core.NumeroDeVidasFueraDeRangoException;
 
 /**
  *

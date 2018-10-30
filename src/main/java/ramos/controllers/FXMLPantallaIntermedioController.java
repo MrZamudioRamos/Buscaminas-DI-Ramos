@@ -34,11 +34,13 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
  *
  * @author Ricardo
  */
-
 public class FXMLPantallaIntermedioController implements Initializable {
 
     private FXMLPantallaPrincipalController principal;
 
+    private FXMLPantallaElegirController elegir;
+
+    private FXMLPantallaPersonalizarController personalizar;
     private int rows = 16, col = 16;
 
     @FXML
@@ -52,6 +54,22 @@ public class FXMLPantallaIntermedioController implements Initializable {
 
     public Label getFxLabelNumeroMinasIntermedio() {
         return fxLabelNumeroMinasIntermedio;
+    }
+
+    public FXMLPantallaElegirController getElegir() {
+        return elegir;
+    }
+
+    public void setElegir(FXMLPantallaElegirController elegir) {
+        this.elegir = elegir;
+    }
+
+    public FXMLPantallaPersonalizarController getPersonalizar() {
+        return personalizar;
+    }
+
+    public void setPersonalizar(FXMLPantallaPersonalizarController personalizar) {
+        this.personalizar = personalizar;
     }
 
     public FXMLPantallaPrincipalController getPrincipal() {
@@ -84,15 +102,15 @@ public class FXMLPantallaIntermedioController implements Initializable {
 
     @FXML
     private Button btn_cara2;
-    
+
     private Node[][] casillas;
-    
+
     private Buscaminas juego;
 
     private int ancho = 16;
     private int alto = 16;
-    private int minas = 16;
     private int vidas = 1;
+    private int minas;
 
     public int getRows() {
         return rows;
@@ -134,14 +152,14 @@ public class FXMLPantallaIntermedioController implements Initializable {
         this.alto = alto;
     }
 
-    public int getMinas() {
-        return minas;
-    }
-
-    public void setMinas(int minas) {
-        this.minas = minas;
-    }
-
+//    public int getMinas() {
+//        return minas;
+//    }
+//
+//    public void setMinas(int minas) {
+//        this.minas = minas;
+//    }
+    
     public int getVidas() {
         return vidas;
     }
@@ -149,23 +167,91 @@ public class FXMLPantallaIntermedioController implements Initializable {
     public void setVidas(int vidas) {
         this.vidas = vidas;
     }
-    
-    public void Tablero() {
-        
-        Juego game = new Juego();
 
-        try {
-            juegoNuevo(ancho, alto, minas, vidas);
-        } catch (NumeroDeVidasFueraDeRangoException ex) {
-            Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+    public void setMinas(int dificultad) {
+
+        switch (dificultad) {
+            case 51:
+                minas = 51;
+                break;
+            case 64:
+                minas = 64;
+                break;
+            case 85:
+                minas = 85;
+                break;
+            default:
+                minas = 33;
+                break;
         }
-        
-      
+
     }
-    
+
+    public void Tablero() {
+        switch (minas) {
+            case 51:
+                try {
+                    juegoNuevoFacil(ancho, alto, minas, vidas);
+                } catch (NumeroDeVidasFueraDeRangoException ex) {
+                    Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+                }       break;
+            case 64:
+                try {
+                    juegoNuevoMedio(ancho, alto, minas, vidas);
+                } catch (NumeroDeVidasFueraDeRangoException ex) {
+                    Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+                }       break;
+            case 85:
+                try {
+                    juegoNuevoDificil(ancho, alto, minas, vidas);
+                } catch (NumeroDeVidasFueraDeRangoException ex) {
+                    Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+                }       break;
+            default:try {
+                    juegoNuevo(ancho, alto, minas, vidas);
+                } catch (NumeroDeVidasFueraDeRangoException ex) {
+                    Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+        }
+    }
+
     Image imgBandera = new Image("/images/bandera.png");
-    
+
     public void juegoNuevo(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
+        try {
+            juego = new Buscaminas(ancho, alto, minas, vidas);
+            juego.soportaBanderas(true);
+        } catch (DemasiadasMinasException e) {
+            System.out.println("Has puesto demasiadas minas");
+        }
+
+        construirTablero();
+    }
+
+    public void juegoNuevoFacil(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
+        try {
+            juego = new Buscaminas(ancho, alto, minas, vidas);
+            juego.soportaBanderas(true);
+        } catch (DemasiadasMinasException e) {
+            System.out.println("Has puesto demasiadas minas");
+        }
+
+        construirTablero();
+    }
+
+    public void juegoNuevoMedio(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
+        try {
+            juego = new Buscaminas(ancho, alto, minas, vidas);
+            juego.soportaBanderas(true);
+        } catch (DemasiadasMinasException e) {
+            System.out.println("Has puesto demasiadas minas");
+        }
+
+        construirTablero();
+    }
+
+    public void juegoNuevoDificil(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
@@ -313,12 +399,13 @@ public class FXMLPantallaIntermedioController implements Initializable {
             }
         }
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Tablero();
+        
     }
 
 }
