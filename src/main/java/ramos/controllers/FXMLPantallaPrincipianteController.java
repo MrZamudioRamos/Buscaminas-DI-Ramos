@@ -285,7 +285,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 				 * referencias a los objetos Casilla cuando necesite recorrerlas
 				 * en base a su posición (coordenadas x y).
                  */
-                casilla.setMinSize(15, 15);
+                //casilla.setMinSize(15, 15);
                 casillas[y][x] = casilla;
             }
         }
@@ -327,8 +327,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     if (juego.tieneBandera(x, y)) {
                         // cuadro.getStyleClass().add("casillaBandera");
                         ImageView imgBandera2 = new ImageView(imgBandera);
-                        imgBandera2.setFitWidth(20);
-                        imgBandera2.setFitHeight(30);
+                        imgBandera2.setFitWidth(15);
+                        imgBandera2.setFitHeight(15);
 
                         cuadro.setGraphic(imgBandera2);
                     } else {
