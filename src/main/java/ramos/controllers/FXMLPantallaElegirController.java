@@ -221,6 +221,7 @@ public class FXMLPantallaElegirController implements Initializable {
 
     public void clickSalirElegir() {
         if (fxElegirPequeño.isSelected()) {
+            principal.precargarPantallaPrincipiante(darMinas());
             principal.cargarNuevaPantallaPrincipiante();
         } else if (fxElegirMediano.isSelected()) {
 //           principal.cargarNuevaPantallaIntermedio();

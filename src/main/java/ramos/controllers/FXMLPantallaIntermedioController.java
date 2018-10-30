@@ -100,8 +100,6 @@ public class FXMLPantallaIntermedioController implements Initializable {
         principal.cargarPantallaElegir();
     }
 
-    @FXML
-    private Button btn_cara2;
 
     private Node[][] casillas;
 

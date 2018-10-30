@@ -121,7 +121,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     }
 
     @FXML
-    public void precargarPantallaPrincipiante() {
+    public void precargarPantallaPrincipiante(int minas) {
 
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
@@ -130,12 +130,14 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaPrincipiante = loaderMenu.load();
             principianteController
                     = loaderMenu.getController();
-
+            
+            principianteController.setMinas(minas);
+            principianteController.Tablero();
             principianteController.setPrincipal(this);
 
         } catch (IOException ex) {
 
-            Logger.getLogger(FXMLPantallaPrincipianteController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -197,6 +199,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     @FXML
     public void precargarPantallaJuegoPersonalizado() {
@@ -334,7 +337,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         precargarPantallaElegir();
         //precargarPantallaIntermedio();
         //precargarPantallaPersonalizar();
-        precargarPantallaPrincipiante();
+        //precargarPantallaPrincipiante();
         precargarPantallaJuegoPersonalizado();
         cargarPantallaMenu();
     }
