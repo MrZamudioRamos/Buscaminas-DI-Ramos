@@ -253,6 +253,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaPrincipiante() {
+        principianteController.start();
         fxRoot.setCenter(pantallaPrincipiante);
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
@@ -271,7 +272,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaDificil() {
+        dificilController.start();
         fxRoot.setCenter(pantallaDificil);
+        fxRoot.setMinHeight(400);
+        fxRoot.setMinWidth(600);
     }
 
     @FXML
@@ -283,6 +287,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaIntermedio() {
+        intermedioController.start();
         fxRoot.setCenter(pantallaIntermedio);
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
@@ -299,20 +304,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setMinHeight(400);
         fxRoot.setMinWidth(600);
     }
-    
-    
-
-//    @FXML
-//    public void cargarNuevaPantallaIntermedio() {
-//        try {
-//            intermedio.juegoNuevo(intermedio.getAncho(), intermedio.getAlto(), intermedio.getMinas(), intermedio.getVidas());
-//        } catch (NumeroDeVidasFueraDeRangoException ex) {
-//            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        fxRoot.setCenter(pantallaIntermedio);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
-//    }
 
     public void clickInicio() {
 

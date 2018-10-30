@@ -22,7 +22,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
-import ramos.clases.Juego;
 import ramos.clases.Temporizador;
 import ramos.core.Buscaminas;
 import ramos.core.Casilla;
@@ -35,7 +34,7 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
  * @author Ricardo
  */
 public class FXMLPantallaIntermedioController implements Initializable {
-
+    Temporizador temp = new Temporizador();
     private FXMLPantallaPrincipalController principal;
 
     private FXMLPantallaElegirController elegir;
@@ -85,7 +84,6 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
 
     public void start() {
-        Temporizador temp = new Temporizador();
         temp.setSeconds(0);
         temp.time(fxText);
         temp.start();
@@ -93,6 +91,9 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
 
     public void clickReiniciarIntermedio() {
+        juego.reset();
+        construirTablero();
+        temp.setSeconds(0);
         start();
     }
 

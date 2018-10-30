@@ -38,7 +38,9 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaDificilController implements Initializable {
 
     private FXMLPantallaPrincipalController principal;
-
+    
+    Temporizador temp = new Temporizador();
+    
     @FXML
     protected GridPane fxGridPaneMinasDificil;
 
@@ -109,11 +111,13 @@ public class FXMLPantallaDificilController implements Initializable {
     }
 
     public void clickReiniciarDificil() {
+        juego.reset();
+        construirTablero();
+        temp.setSeconds(0);
         start();
     }
 
     public void start() {
-        Temporizador temp = new Temporizador();
         temp.setSeconds(0);
         temp.time(fxText);
         temp.start();

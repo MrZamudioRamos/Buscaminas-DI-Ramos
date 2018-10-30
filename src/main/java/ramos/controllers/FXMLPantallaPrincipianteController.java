@@ -37,7 +37,7 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaPrincipianteController implements Initializable {
 
     Juego game = new Juego();
-    
+
     @FXML
     public Label fxLabelNumeroMinasPrincipiante;
 
@@ -51,6 +51,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 
     @FXML
     protected Text fxText;
+    
+    Temporizador temp = new Temporizador();
 
     public Label getFxLabelNumeroMinasPrincipiante() {
         return fxLabelNumeroMinasPrincipiante;
@@ -71,7 +73,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void clickSalirPrincipiante() {
         principal.cargarPantallaElegir();
     }
-    
+
     private Node[][] casillas;
 
     private Buscaminas juego;
@@ -141,23 +143,24 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                 break;
         }
     }
-    
-    
 
     public void start() {
-        Temporizador temp = new Temporizador();
         temp.setSeconds(0);
         temp.time(fxText);
         temp.start();
     }
 
     public void clickReiniciarPrincipiante() {
+        juego.reset();
+        construirTablero();
+        temp.setSeconds(0);
         start();
     }
 
     /**
      * Initializes the controller class.
-     * @return 
+     *
+     * @return
      */
     public void Tablero() {
         switch (minas) {
@@ -166,20 +169,24 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     juegoNuevoFacil(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
+                }
+                break;
             case 16:
                 try {
                     juegoNuevoMedio(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
+                }
+                break;
             case 21:
                 try {
                     juegoNuevoDificil(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
-            default:try {
+                }
+                break;
+            default:
+                try {
                     juegoNuevo(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,7 +194,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                 break;
         }
     }
-    
+
     public void juegoNuevo(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
@@ -231,8 +238,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 
         construirTablero();
     }
-    
-    
+
     public void construirTablero() {
         /*
 		 * Primero limpiamos todo lo que hay dentro del GridPane y del array
@@ -371,7 +377,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
             }
         }
     }
-    public void Game(){
+
+    public void Game() {
 //        game.DetectarMinas(rows, col);
     }
 
