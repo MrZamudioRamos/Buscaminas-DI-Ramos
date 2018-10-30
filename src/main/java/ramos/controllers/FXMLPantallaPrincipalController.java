@@ -142,7 +142,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     }
 
     @FXML
-    public void precargarPantallaDificil() {
+    public void precargarPantallaDificil(int minas) {
 
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
@@ -151,7 +151,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaDificil = loaderMenu.load();
             dificilController
                     = loaderMenu.getController();
-
+            dificilController.setMinas(minas);
+            dificilController.Tablero();
             dificilController.setPrincipal(this);
 
         } catch (IOException ex) {
@@ -333,7 +334,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         // TODO
         precargarPantallaMenu();
         precargarPantallaOpciones();
-        precargarPantallaDificil();
+       // precargarPantallaDificil();
         precargarPantallaElegir();
         //precargarPantallaIntermedio();
         //precargarPantallaPersonalizar();

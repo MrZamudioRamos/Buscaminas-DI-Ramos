@@ -224,11 +224,10 @@ public class FXMLPantallaElegirController implements Initializable {
             principal.precargarPantallaPrincipiante(darMinas());
             principal.cargarNuevaPantallaPrincipiante();
         } else if (fxElegirMediano.isSelected()) {
-//           principal.cargarNuevaPantallaIntermedio();
-            
             principal.precargarPantallaIntermedio(darMinas());
             principal.cargarPantallaIntermedio();
         } else if (fxElegirGrande.isSelected()) {
+            principal.precargarPantallaDificil(darMinas());
             principal.cargarNuevaPantallaDificil();
         }
     }
