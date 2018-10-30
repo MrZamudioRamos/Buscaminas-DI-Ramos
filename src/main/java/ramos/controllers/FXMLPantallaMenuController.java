@@ -38,7 +38,7 @@ public class FXMLPantallaMenuController implements Initializable {
     }
     
     public void clickJugar() {
-        principal.cargarPantallaPrincipiante();
+        principal.cargarPantallaOpciones();
     }
 
     public void clickPersonalizar() {

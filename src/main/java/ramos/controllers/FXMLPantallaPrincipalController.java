@@ -306,7 +306,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     }
 
     public void clickInicio() {
-
+        cargarPantallaOpciones();
     }
 
     public void clickGuia() {

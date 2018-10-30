@@ -307,6 +307,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
 				 * referencias a los objetos Casilla cuando necesite recorrerlas
 				 * en base a su posición (coordenadas x y).
                  */
+                casilla.setMinSize(20, 20);
                 casillas[y][x] = casilla;
             }
         }

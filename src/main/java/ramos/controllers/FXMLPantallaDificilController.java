@@ -270,6 +270,7 @@ public class FXMLPantallaDificilController implements Initializable {
 				 * referencias a los objetos Casilla cuando necesite recorrerlas
 				 * en base a su posición (coordenadas x y).
                  */
+                casilla.setMinSize(15, 15);
                 casillas[y][x] = casilla;
             }
         }
