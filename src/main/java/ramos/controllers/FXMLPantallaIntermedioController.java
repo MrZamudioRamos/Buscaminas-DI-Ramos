@@ -34,6 +34,7 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
  * @author Ricardo
  */
 public class FXMLPantallaIntermedioController implements Initializable {
+    
     Temporizador temp = new Temporizador();
     private FXMLPantallaPrincipalController principal;
 
