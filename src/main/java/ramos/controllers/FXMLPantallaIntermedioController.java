@@ -5,6 +5,7 @@
  */
 package ramos.controllers;
 
+import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,7 +35,7 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
  * @author Ricardo
  */
 public class FXMLPantallaIntermedioController implements Initializable {
-    
+
     Temporizador temp = new Temporizador();
     private FXMLPantallaPrincipalController principal;
 
@@ -93,7 +94,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
 
     public void clickReiniciarIntermedio() {
         juego.reset();
-        construirTablero();
+        Tablero();
         temp.setSeconds(0);
         start();
     }
@@ -101,7 +102,6 @@ public class FXMLPantallaIntermedioController implements Initializable {
     public void clickSalirIntermedio() {
         principal.cargarPantallaElegir();
     }
-
 
     private Node[][] casillas;
 
@@ -159,7 +159,6 @@ public class FXMLPantallaIntermedioController implements Initializable {
 //    public void setMinas(int minas) {
 //        this.minas = minas;
 //    }
-    
     public int getVidas() {
         return vidas;
     }
@@ -194,20 +193,24 @@ public class FXMLPantallaIntermedioController implements Initializable {
                     juegoNuevoFacil(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
+                }
+                break;
             case 64:
                 try {
                     juegoNuevoMedio(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
+                }
+                break;
             case 85:
                 try {
                     juegoNuevoDificil(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
-                }       break;
-            default:try {
+                }
+                break;
+            default:
+                try {
                     juegoNuevo(ancho, alto, minas, vidas);
                 } catch (NumeroDeVidasFueraDeRangoException ex) {
                     Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,7 +284,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
             for (int x = 0; x < juego.ancho(); x++) {
                 // Creo una casilla personalizada con las coordenadas
                 Casilla casilla = new Casilla(x, y, " ");
-
+                casilla.setMaxSize(MAX_VALUE, MAX_VALUE);
                 // Le doy una acción, de tipo ratón.
                 casilla.setOnMouseClicked(p -> {
                     // Si el jugador pulsa el botón izquierdo del ratón,
@@ -406,7 +409,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
 }

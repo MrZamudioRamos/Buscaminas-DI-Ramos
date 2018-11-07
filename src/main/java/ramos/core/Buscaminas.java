@@ -448,6 +448,7 @@ public class Buscaminas {
 
 		casillasTapadasRestantes = ancho * alto - totalMinas;
 		minasSinBanderaRestantes = totalMinas;
+                
 	}
 
 	/**

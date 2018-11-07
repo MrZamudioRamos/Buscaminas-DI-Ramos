@@ -274,8 +274,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarPantallaDificil() {
         dificilController.start();
         fxRoot.setCenter(pantallaDificil);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
     }
 
     @FXML
@@ -328,7 +328,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
        // precargarPantallaDificil();
         precargarPantallaElegir();
         //precargarPantallaIntermedio();
-        //precargarPantallaPersonalizar();
+        precargarPantallaPersonalizar();
         //precargarPantallaPrincipiante();
         precargarPantallaJuegoPersonalizado();
         cargarPantallaMenu();

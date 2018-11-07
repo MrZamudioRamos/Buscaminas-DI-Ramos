@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ramos.controllers;
 
+import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,9 +38,9 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaDificilController implements Initializable {
 
     private FXMLPantallaPrincipalController principal;
-    
+
     Temporizador temp = new Temporizador();
-    
+
     @FXML
     protected GridPane fxGridPaneMinasDificil;
 
@@ -57,7 +57,7 @@ public class FXMLPantallaDificilController implements Initializable {
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
     }
-    
+
     private Node[][] casillas;
 
     private Buscaminas juego;
@@ -112,7 +112,7 @@ public class FXMLPantallaDificilController implements Initializable {
 
     public void clickReiniciarDificil() {
         juego.reset();
-        construirTablero();
+        Tablero();
         temp.setSeconds(0);
         start();
     }
@@ -243,7 +243,7 @@ public class FXMLPantallaDificilController implements Initializable {
             for (int x = 0; x < juego.ancho(); x++) {
                 // Creo una casilla personalizada con las coordenadas
                 Casilla casilla = new Casilla(x, y, " ");
-
+                casilla.setMaxSize(MAX_VALUE, MAX_VALUE);
                 // Le doy una acción, de tipo ratón.
                 casilla.setOnMouseClicked(p -> {
                     // Si el jugador pulsa el botón izquierdo del ratón,
@@ -270,9 +270,8 @@ public class FXMLPantallaDificilController implements Initializable {
 				 * referencias a los objetos Casilla cuando necesite recorrerlas
 				 * en base a su posición (coordenadas x y).
                  */
-                
                 casillas[y][x] = casilla;
-                
+
             }
         }
 

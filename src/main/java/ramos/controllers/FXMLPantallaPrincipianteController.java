@@ -5,6 +5,7 @@
  */
 package ramos.controllers;
 
+import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -152,7 +153,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 
     public void clickReiniciarPrincipiante() {
         juego.reset();
-        construirTablero();
+        Tablero();
         temp.setSeconds(0);
         start();
     }
@@ -258,14 +259,13 @@ public class FXMLPantallaPrincipianteController implements Initializable {
             for (int x = 0; x < juego.ancho(); x++) {
                 // Creo una casilla personalizada con las coordenadas
                 Casilla casilla = new Casilla(x, y, " ");
-
+                casilla.setMaxSize(MAX_VALUE, MAX_VALUE);
                 // Le doy una acción, de tipo ratón.
                 casilla.setOnMouseClicked(p -> {
                     // Si el jugador pulsa el botón izquierdo del ratón,
                     // cavo
                     // la casilla, pero si pulsa el derecho, pongo una
                     // bandera.
-
                     // CAVO
                     if (p.getButton() == MouseButton.PRIMARY) {
                         juego.cavar(casilla.getX(), casilla.getY());
@@ -327,8 +327,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     if (juego.tieneBandera(x, y)) {
                         // cuadro.getStyleClass().add("casillaBandera");
                         ImageView imgBandera2 = new ImageView(imgBandera);
-                        imgBandera2.setFitWidth(15);
-                        imgBandera2.setFitHeight(15);
+                        imgBandera2.setFitWidth(MAX_VALUE);
+                        imgBandera2.setFitHeight(MAX_VALUE);
 
                         cuadro.setGraphic(imgBandera2);
                     } else {
