@@ -28,13 +28,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     private BorderPane fxRoot;
 
-    @FXML
-    private MenuBar fxMenu;
-
+   
     private FXMLPantallaIntermedioController intermedio;
-    
+
     private FXMLPantallaPersonalizarController personalizar;
-    
+
     private FXMLPantallaElegirController elegir;
 
     private AnchorPane pantallaOpciones;
@@ -61,8 +59,9 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void setPersonalizar(FXMLPantallaPersonalizarController personalizar) {
         this.personalizar = personalizar;
     }
-    
+
     //PRECARGAR PANTALLAS
+    
     @FXML
     public void precargarPantallaMenu() {
 
@@ -130,7 +129,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaPrincipiante = loaderMenu.load();
             principianteController
                     = loaderMenu.getController();
-            
+
             principianteController.setMinas(minas);
             principianteController.Tablero();
             principianteController.setPrincipal(this);
@@ -190,7 +189,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaIntermedio = loaderMenu.load();
             intermedioController
                     = loaderMenu.getController();
-            
+//            pantallaIntermedio.setMinSize(640, 481);
             intermedioController.setMinas(minas);
             intermedioController.Tablero();
             intermedioController.setPrincipal(this);
@@ -200,7 +199,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     @FXML
     public void precargarPantallaJuegoPersonalizado() {
@@ -212,7 +210,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaJuegoPersonalizado = loaderMenu.load();
             juegoPersonalizadoController
                     = loaderMenu.getController();
-           
+
             juegoPersonalizadoController.setPrincipal(this);
 
         } catch (IOException ex) {
@@ -223,40 +221,39 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarPantallaMenu() {
-        fxMenu.setVisible(false);
         fxRoot.setCenter(pantallaMenu);
-        fxRoot.setMinHeight(500);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(500);
+//        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaOpciones() {
 
         fxRoot.setCenter(pantallaOpciones);
-        fxRoot.setMinHeight(500);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(500);
+//        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaElegir() {
         fxRoot.setCenter(pantallaElegir);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaPersonalizar() {
         fxRoot.setCenter(pantallaPersonalizar);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
     }
 
     @FXML
     public void cargarPantallaPrincipiante() {
         principianteController.start();
         fxRoot.setCenter(pantallaPrincipiante);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
 
     }
 
@@ -265,44 +262,49 @@ public class FXMLPantallaPrincipalController implements Initializable {
         String mina = elegirController.Tablero();
         principianteController.fxLabelNumeroMinasPrincipiante.setText(mina);
         fxRoot.setCenter(pantallaPrincipiante);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
 
     }
 
     @FXML
     public void cargarPantallaDificil() {
         dificilController.start();
+//        fxRoot.setMinHeight(643);
+//        fxRoot.setMinWidth(840);
         fxRoot.setCenter(pantallaDificil);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
+        
     }
 
     @FXML
     public void cargarNuevaPantallaDificil() {
         String mina = elegirController.Tablero();
         dificilController.fxLabelNumeroMinasDificil.setText(mina);
+//        fxRoot.setMinHeight(800);
+//        fxRoot.setMinWidth(1000);
         fxRoot.setCenter(pantallaDificil);
+        
     }
 
     @FXML
     public void cargarPantallaIntermedio() {
         intermedioController.start();
+//        fxRoot.setMinHeight(481);
+//        fxRoot.setMinWidth(640);
         fxRoot.setCenter(pantallaIntermedio);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+        
     }
-    
+
     @FXML
-    public void cargarPantallaJuegoPersonalizado(){
-         try {
-            juegoPersonalizadoController.juegoNuevo(personalizar.getValorAncho(), personalizar.getValorAlto(), personalizar.darMinas(),1);
+    public void cargarPantallaJuegoPersonalizado() {
+        try {
+            juegoPersonalizadoController.juegoNuevo(personalizar.getValorAncho(), personalizar.getValorAlto(), personalizar.darMinas(), 1);
         } catch (NumeroDeVidasFueraDeRangoException ex) {
             Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
         fxRoot.setCenter(pantallaJuegoPersonalizado);
-        fxRoot.setMinHeight(400);
-        fxRoot.setMinWidth(600);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
     }
 
     public void clickInicio() {
@@ -325,7 +327,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         // TODO
         precargarPantallaMenu();
         precargarPantallaOpciones();
-       // precargarPantallaDificil();
+        // precargarPantallaDificil();
         precargarPantallaElegir();
         //precargarPantallaIntermedio();
         precargarPantallaPersonalizar();

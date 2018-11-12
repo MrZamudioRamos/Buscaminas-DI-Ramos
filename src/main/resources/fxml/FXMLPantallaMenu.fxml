@@ -6,14 +6,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="409.0" prefWidth="500.0" styleClass="fondoMenu" stylesheets="@../styles/fxmlpantallamenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaMenuController">
+<AnchorPane id="AnchorPane" prefHeight="532.0" prefWidth="582.0" styleClass="fondoMenu" stylesheets="@../styles/fxmlpantallamenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaMenuController">
     <children>
       <Button layoutX="197.0" layoutY="342.0" mnemonicParsing="false" onAction="#clickVerRanking" prefHeight="30.0" prefWidth="148.0" text="VER RÁNKING" />
       <Button layoutX="284.0" layoutY="298.0" mnemonicParsing="false" onAction="#clickPersonalizar" prefHeight="30.0" prefWidth="148.0" text="PERSONALIZAR" />
       <Button layoutX="197.0" layoutY="253.0" mnemonicParsing="false" onAction="#clickJugar" prefHeight="30.0" prefWidth="148.0" text="JUGAR" textAlignment="CENTER" textOverrun="CLIP" />
       <Button layoutX="284.0" layoutY="385.0" mnemonicParsing="false" onAction="#clickAyuda" prefHeight="30.0" prefWidth="148.0" text="AYUDA" />
       <Button layoutX="197.0" layoutY="425.0" mnemonicParsing="false" onAction="#clickSalir" prefHeight="30.0" prefWidth="148.0" text="SALIR" />
-      <Label layoutX="97.0" layoutY="14.0" prefHeight="100.0" prefWidth="424.0" text="BUSCAMINAS">
+      <Label layoutX="72.0" layoutY="8.0" prefHeight="100.0" prefWidth="424.0" text="BUSCAMINAS">
          <font>
             <Font size="64.0" />
          </font>

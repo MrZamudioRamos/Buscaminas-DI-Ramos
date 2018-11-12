@@ -13,10 +13,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaIntermedioController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="639.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaIntermedioController">
  
     <children>
-      <Rectangle fx:id="fxFondoIntermedio" arcHeight="5.0" arcWidth="5.0" height="480.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="189.0">
+      <Rectangle fx:id="fxFondoIntermedio" arcHeight="5.0" arcWidth="5.0" height="564.0" layoutX="-2.0" layoutY="-83.0" stroke="BLACK" strokeType="INSIDE" width="189.0">
          <fill>
             <LinearGradient endX="1.0" endY="0.8095238095238095" startY="0.7904761904761904">
                <stops>
@@ -25,7 +25,7 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="480.0" layoutX="188.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="452.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="564.0" layoutX="187.0" layoutY="-83.0" stroke="BLACK" strokeType="INSIDE" width="453.0">
          <fill>
             <LinearGradient endX="0.6095238095238096" endY="0.009523809523809601" startX="0.7714285714285715" startY="0.9333333333333333">
                <stops>
