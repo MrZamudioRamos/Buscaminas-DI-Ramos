@@ -272,6 +272,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     } // BANDERA
                     else if (p.getButton() == MouseButton.SECONDARY) {
                         juego.marcarBandera(casilla.getX(), casilla.getY());
+                    }else if(p.getButton() == MouseButton.SECONDARY && juego.tieneBandera(casilla.getX(), casilla.getY())){
+                        juego.marcarInterrogacion(casilla.getX(),casilla.getY());
                     }
                     actualizarTablero();
                 });
@@ -369,6 +371,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         for (int i = 0; i < juego.alto(); i++) {
             for (int j = 0; j < juego.ancho(); j++) {
                 if (juego.tieneBandera(j, i)) {
+                    
                     if (!juego.hayMina(j, i)) {
                         // Mal
                     }
