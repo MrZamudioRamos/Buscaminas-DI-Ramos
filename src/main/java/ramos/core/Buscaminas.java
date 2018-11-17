@@ -219,10 +219,12 @@ public class Buscaminas {
      * @param y Fila
      */
     public void cavar(int x, int y) {
+        
         // Si el juego ha terminado, o si la casilla est  protegida por una
         // bandera, no ejecutaremos ninguna acci n. Si la casilla tiene bandera
         // y el usuario quiere cavar en ella, tendr  que retirar la bandera
         // previamente.
+        
         if (gameOver || tieneBandera(x, y)) {
             return;
         }
@@ -257,18 +259,8 @@ public class Buscaminas {
         // bandera, no ejecutaremos ninguna acci n. Si la casilla tiene bandera
         // y el usuario quiere cavar en ella, tendr  que retirar la bandera
         // previamente.
-        if (gameOver) {
-            return;
-        }
         
-        
-    if(!tieneBandera(x, y) || tieneBandera(x, y))
-        // Si hay mina
-        if (hayMina(x, y) || !hayMina(x,y)) {
-
-                destaparTodas(alto(), ancho());
-            
-        }
+        destapar(x, y);
 
     }
 
