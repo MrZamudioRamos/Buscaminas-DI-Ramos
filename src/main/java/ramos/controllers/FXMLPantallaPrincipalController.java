@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
 
 /**
@@ -25,7 +26,7 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
-    private BorderPane fxRoot;
+    protected BorderPane fxRoot;
 
    
     private FXMLPantallaIntermedioController intermedio;
@@ -73,7 +74,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaMenu = loaderMenu.load();
             menuController
                     = loaderMenu.getController();
-
             menuController.setPrincipal(this);
 
         } catch (IOException ex) {
@@ -92,7 +92,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
             pantallaAyuda = loaderMenu.load();
             AyudaController
                     = loaderMenu.getController();
-
             AyudaController.setPrincipal(this);
 
         } catch (IOException ex) {
@@ -329,8 +328,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
     
     @FXML
     public void cargarPantallaAyuda() {
-        fxRoot.setMinHeight(557);
-        fxRoot.setMinWidth(781);
         fxRoot.setCenter(pantallaAyuda);
         
     }
@@ -358,6 +355,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         precargarPantallaOpciones();
         // precargarPantallaDificil();
         precargarPantallaElegir();
+        
         //precargarPantallaIntermedio();
         precargarPantallaPersonalizar();
         //precargarPantallaPrincipiante();

@@ -5,6 +5,8 @@
  */
 package ramos.core;
 
+import ramos.clases.Temporizador;
+
 /**
  *
  * @author Ricardo

@@ -40,6 +40,7 @@ public class MainBuscaminas extends Application {
         //para no poder maximizar pantalla y
         //primaryStage.setResizable(false);
     }
+    
 
     /**
      * @param args the command line arguments

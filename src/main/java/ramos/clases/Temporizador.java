@@ -15,9 +15,9 @@ import javafx.scene.text.Text;
  */
 public class Temporizador {
 
-    int seconds = 0;
-    Timer myTimer = new Timer();
-    TimerTask task;
+    public int seconds = 0;
+    public Timer myTimer = new Timer();
+    public TimerTask task;
 
     public void time(Text fxText) {
 
@@ -32,12 +32,25 @@ public class Temporizador {
     }
     
     public void start(){
+        task.run();
         myTimer.scheduleAtFixedRate(task, 1000, 1000); 
+    }
+    
+    public void stop(){
+        task.cancel();
+        myTimer.cancel();
+        myTimer.purge();
+        myTimer = new Timer();
+        
     }
     
 
     public void setSeconds(int seconds) {
         this.seconds = seconds;
+    }
+
+    public int getSeconds() {
+        return seconds;
     }
     
     

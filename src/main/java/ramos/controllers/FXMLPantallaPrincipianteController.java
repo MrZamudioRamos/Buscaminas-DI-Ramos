@@ -51,6 +51,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     @FXML
     protected Text fxText;
 
+    @FXML
+    protected Button fxReset;
+
     Temporizador temp = new Temporizador();
 
     public Label getFxLabelNumeroMinasPrincipiante() {
@@ -152,8 +155,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void clickReiniciarPrincipiante() {
         juego.reset();
         Tablero();
-        temp.setSeconds(0);
         start();
+        fxReset.setDisable(true);
     }
 
     /**
@@ -321,7 +324,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     cuadro.setDisable(true);
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
-                        
+
                         cuadro.getStyleClass().add("casillaMina");
                         ImageView imagenMina = new ImageView(this.imagenMina);
                         imagenMina.setFitWidth(25);
@@ -361,7 +364,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
             }
         }
         if (juego.isGameOver()) {
+            temp.stop();
             gameOverMostrarSolucion();
+            fxReset.setDisable(false);
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
             } else {

@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -13,10 +14,10 @@ import javafx.scene.control.Button;
  */
 public class FXMLPantallaAyudaController implements Initializable {
     
-    @FXML
-    private Button fxBackMenu;
-    
     private FXMLPantallaPrincipalController principal;
+    
+    @FXML
+    protected AnchorPane AyudaScene;
     
     public FXMLPantallaPrincipalController getPrincipal() {
         return principal;
@@ -32,14 +33,8 @@ public class FXMLPantallaAyudaController implements Initializable {
     
     
     
-    
-    
-    
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     
 }
