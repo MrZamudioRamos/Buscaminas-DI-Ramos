@@ -390,7 +390,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void gameOverMostrarSolucion() {
         for (int i = 0; i < juego.alto(); i++) {
             for (int j = 0; j < juego.ancho(); j++) {
-                juego.cavar2(j, j);
+                juego.cavar2(i, j);
             }
 
         }
