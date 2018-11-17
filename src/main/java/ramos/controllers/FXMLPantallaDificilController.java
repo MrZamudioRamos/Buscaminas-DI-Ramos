@@ -178,12 +178,15 @@ public class FXMLPantallaDificilController implements Initializable {
         }
     }
 
-    Image imgBandera = new Image("/images/bandera.png");
+   Image imgBandera = new Image("/images/bandera.png");
+    Image imagenMina = new Image("/images/mina.png");
+    Image imagenPregunta = new Image("/images/pregunta.png");
 
     public void juegoNuevo(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -195,6 +198,7 @@ public class FXMLPantallaDificilController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -206,6 +210,7 @@ public class FXMLPantallaDificilController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -217,6 +222,7 @@ public class FXMLPantallaDificilController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -250,13 +256,15 @@ public class FXMLPantallaDificilController implements Initializable {
                     // cavo
                     // la casilla, pero si pulsa el derecho, pongo una
                     // bandera.
-
                     // CAVO
                     if (p.getButton() == MouseButton.PRIMARY) {
                         juego.cavar(casilla.getX(), casilla.getY());
                     } // BANDERA
                     else if (p.getButton() == MouseButton.SECONDARY) {
                         juego.marcarBandera(casilla.getX(), casilla.getY());
+                        juego.setPreguntamarcada(true);
+                    } else if (p.getButton() == MouseButton.SECONDARY && juego.isPreguntamarcada()) {
+                        juego.marcarInterrogacion(casilla.getX(), casilla.getY());
                     }
                     actualizarTablero();
                 });
@@ -324,10 +332,12 @@ public class FXMLPantallaDificilController implements Initializable {
             }
         }
         if (juego.isGameOver()) {
+            gameOverMostrarSolucion();
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
+                gameOverMostrarSolucion();
             }
         }
 

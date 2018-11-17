@@ -243,7 +243,7 @@ public class Buscaminas {
                 // Acaba el juego
                 gameOver = true;
                 ganador = false;
-                destaparTodas(alto(), ancho());
+                
             }
         }
 

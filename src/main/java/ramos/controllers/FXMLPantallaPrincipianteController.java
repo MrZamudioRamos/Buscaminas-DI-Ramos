@@ -366,6 +366,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                 alerta("¡Has ganado!");
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
+                gameOverMostrarSolucion();
             }
         }
 
