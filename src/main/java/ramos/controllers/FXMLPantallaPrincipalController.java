@@ -50,6 +50,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private FXMLPantallaDificilController dificilController;
     private AnchorPane pantallaJuegoPersonalizado;
     private FXMLPantallaJuegoPersonalizadoController juegoPersonalizadoController;
+    private AnchorPane pantallaAyuda;
+    private FXMLPantallaAyudaController AyudaController;
 
     public FXMLPantallaPersonalizarController getPersonalizar() {
         return personalizar;
@@ -73,6 +75,25 @@ public class FXMLPantallaPrincipalController implements Initializable {
                     = loaderMenu.getController();
 
             menuController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    public void precargarPantallaAyuda() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaAyuda.fxml"));
+            pantallaAyuda = loaderMenu.load();
+            AyudaController
+                    = loaderMenu.getController();
+
+            AyudaController.setPrincipal(this);
 
         } catch (IOException ex) {
 
@@ -305,6 +326,14 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinHeight(400);
 //        fxRoot.setMinWidth(600);
     }
+    
+    @FXML
+    public void cargarPantallaAyuda() {
+        fxRoot.setMinHeight(557);
+        fxRoot.setMinWidth(781);
+        fxRoot.setCenter(pantallaAyuda);
+        
+    }
 
     public void clickInicio() {
         cargarPantallaOpciones();
@@ -325,6 +354,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         precargarPantallaMenu();
+        precargarPantallaAyuda();
         precargarPantallaOpciones();
         // precargarPantallaDificil();
         precargarPantallaElegir();
