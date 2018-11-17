@@ -385,6 +385,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     }
 
     
+    
     public void alerta(String mensaje) {
         alerta(Alert.AlertType.INFORMATION, mensaje);
     }
