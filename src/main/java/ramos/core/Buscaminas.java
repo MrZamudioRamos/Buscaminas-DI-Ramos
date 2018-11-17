@@ -139,18 +139,18 @@ public class Buscaminas {
         // Si se ha configurado para que el juego soporte interrogaciones, se ejecutar 
         // el m todo. De lo contrario, no debe hacer nada.
         if (soportaInterrogacion && !gameOver) {
-            interrogacion[y][x] =  true;
+            interrogacion[y][x] = true;
 
         }
     }
 
     public void marcarBanderaPorInterrogacion(int x, int y) {
-        
-        banderamarcada[x][y]= true;
+
+        banderamarcada[x][y] = true;
     }
-    
+
     public boolean getMarcarBanderaPorInterrogacion(int x, int y) {
-        
+
         return banderamarcada[x][y];
     }
 
@@ -241,6 +241,7 @@ public class Buscaminas {
                 // Acaba el juego
                 gameOver = true;
                 ganador = false;
+                destaparTodas(alto(), ancho());
             }
         }
 
@@ -249,6 +250,26 @@ public class Buscaminas {
         if (vidasRestantes == 0) {
             gameOver = true;
         }
+    }
+    
+    public void cavar2(int x, int y) {
+        // Si el juego ha terminado, o si la casilla est  protegida por una
+        // bandera, no ejecutaremos ninguna acci n. Si la casilla tiene bandera
+        // y el usuario quiere cavar en ella, tendr  que retirar la bandera
+        // previamente.
+        if (gameOver) {
+            return;
+        }
+        
+        
+    if(!tieneBandera(x, y) || tieneBandera(x, y))
+        // Si hay mina
+        if (hayMina(x, y) || !hayMina(x,y)) {
+
+                destaparTodas(alto(), ancho());
+            
+        }
+
     }
 
     /**
@@ -279,7 +300,7 @@ public class Buscaminas {
      * @param x Columna
      * @param y Fila
      */
-    private void destapar(int x, int y) {
+    public void destapar(int x, int y) {
 
         // En este punto, a parte de destapar la casilla, decidimos si el juego
         // ha finalizado.
@@ -354,6 +375,68 @@ public class Buscaminas {
         }
 
     }
+
+    public void destaparTodas(int x, int y) {
+        
+        if (!destapadas[y][x] && !banderas[y][x]) {
+            destapadas[y][x] = true;
+        }
+       for (int i = 0; i < alto(); i++) {
+            for (int j = 0; j < ancho(); j++) {
+                 if (hayMinasAlrededor(x, y)||hayMinasAlrededor(x, y)) {
+
+            // Compruebo los lados
+            // Compruebo arriba y abajo
+            if (y > 0 && !estaDestapada(x, y - 1)) {
+                destapar(x, y - 1);
+                destaparTodas(x, y);
+            }
+            if (y < alto() && !estaDestapada(x, y + 1)) {
+                destapar(x, y + 1);
+                destaparTodas(x, y);
+            }
+
+            // Compruebo a la derecha e izquierda
+            if (x > 0 && !estaDestapada(x - 1, y)) {
+                destapar(x - 1, y);
+                destaparTodas(x, y);
+            }
+            if (x < ancho() && !estaDestapada(x + 1, y)) {
+                destapar(x + 1, y);
+                destaparTodas(x, y);
+            }
+
+            // Compruebo en las diagonales
+            // Diagonal superior izquierda
+            if (x > 0 && y > 0 && !estaDestapada(x - 1, y - 1)) {
+                destapar(x - 1, y - 1);
+                destaparTodas(x, y);
+            }
+
+            // Diagonal superior derecha
+            if (x < ancho() && y > 0 && !estaDestapada(x + 1, y - 1)) {
+                destapar(x + 1, y - 1);
+                destaparTodas(x, y);
+            }
+
+            // Diagonal inferior izquierda
+            if (x > 0 && y < alto() && !estaDestapada(x - 1, y + 1)) {
+                destapar(x - 1, y + 1);
+               destaparTodas(x, y);
+            }
+
+            // Diagonal inferior derecha
+            if (x < ancho() && y < alto() && !estaDestapada(x + 1, y + 1)) {
+                destapar(x + 1, y + 1);
+                destaparTodas(x, y);
+            }
+        }
+            }
+
+        }
+       
+        }
+    
 
     /**
      * Este m todo es privado y para uso interno del n cleo del juego.
@@ -523,7 +606,6 @@ public class Buscaminas {
         return banderamarcada;
     }
 
-
     public boolean isPreguntamarcada() {
         return preguntamarcada;
     }
@@ -531,8 +613,5 @@ public class Buscaminas {
     public void setPreguntamarcada(boolean preguntamarcada) {
         this.preguntamarcada = preguntamarcada;
     }
-    
-    
-    
 
 }

@@ -352,7 +352,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 
                         cuadro.setGraphic(imgBandera2);
                         juego.setPreguntamarcada(true);
-                    }else{
+                    } else {
                         cuadro.setGraphic(null);
                     }
                 }
@@ -360,6 +360,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
             }
         }
         if (juego.isGameOver()) {
+            gameOverMostrarSolucion();
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
             } else {
@@ -388,15 +389,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     public void gameOverMostrarSolucion() {
         for (int i = 0; i < juego.alto(); i++) {
             for (int j = 0; j < juego.ancho(); j++) {
-                if (juego.tieneBandera(j, i)) {
-
-                    if (!juego.hayMina(j, i)) {
-                        // Mal
-                    }
-                } else if (juego.hayMina(j, i)) {
-                    // Mal
-                }
+                juego.destapar(j, j);
             }
+
         }
     }
 
