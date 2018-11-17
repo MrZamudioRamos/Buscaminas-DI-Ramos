@@ -321,6 +321,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     cuadro.setDisable(true);
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
+                        
                         cuadro.getStyleClass().add("casillaMina");
                         ImageView imagenMina = new ImageView(this.imagenMina);
                         imagenMina.setFitWidth(25);
