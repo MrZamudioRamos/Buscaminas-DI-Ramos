@@ -42,6 +42,7 @@ public class Temporizador {
         myTimer.purge();
         myTimer = new Timer();
         
+        
     }
     
 
