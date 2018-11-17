@@ -51,7 +51,7 @@ public class FXMLPantallaMenuController implements Initializable {
     }
 
     public void clickAyuda() {
-
+        principal.cargarPantallaAyuda();
     }
 
     public void clickSalir() {

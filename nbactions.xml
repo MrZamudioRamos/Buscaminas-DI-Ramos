@@ -12,6 +12,7 @@
             <properties>
                 <exec.args>-classpath %classpath main.MainBuscaminas</exec.args>
                 <exec.executable>java</exec.executable>
+                <exec.workingdir>C:\Users\carlu\Desktop</exec.workingdir>
                 <exec.workingdir></exec.workingdir>
             </properties>
         </action>
