@@ -384,6 +384,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         temp.showAndWait();
     }
 
+    
     public void alerta(String mensaje) {
         alerta(Alert.AlertType.INFORMATION, mensaje);
     }
