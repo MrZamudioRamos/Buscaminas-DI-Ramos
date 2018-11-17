@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaIntermedioController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaIntermedioController">
  
     <children>
       <Rectangle fx:id="fxFondoIntermedio" arcHeight="5.0" arcWidth="5.0" height="786.0" layoutX="-2.0" layoutY="-83.0" stroke="BLACK" strokeType="INSIDE" width="158.0">
@@ -73,10 +73,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label layoutX="14.0" layoutY="15.0" text="Nombre del jugador:">
-         <font>
-            <Font size="14.0" />
-         </font></Label>
       <Label fx:id="fxLabelNombreJugadorIntermedio" layoutX="29.0" layoutY="38.0" prefHeight="17.0" prefWidth="129.0">
          <font>
             <Font size="15.0" />
@@ -88,7 +84,6 @@
          </font></Label>
       <Button fx:id="fxReset" layoutX="6.0" layoutY="282.0" mnemonicParsing="false" onAction="#clickReiniciarIntermedio" prefHeight="39.0" prefWidth="81.0" text="INICIAR" />
       <Button layoutX="7.0" layoutY="370.0" mnemonicParsing="false" onAction="#clickSalirIntermedio" prefHeight="39.0" prefWidth="81.0" text="SALIR" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="27.0" layoutX="14.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="39.0" layoutX="14.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="65.0" />
       <Label fx:id="fxLabelNumeroMinasIntermedio" layoutX="42.0" layoutY="179.0" text="0">
          <font>
