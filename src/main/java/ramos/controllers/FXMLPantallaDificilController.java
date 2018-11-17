@@ -306,7 +306,13 @@ public class FXMLPantallaDificilController implements Initializable {
                     cuadro.setDisable(true);
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
+                        
                         cuadro.getStyleClass().add("casillaMina");
+                        ImageView imagenMina = new ImageView(this.imagenMina);
+                        imagenMina.setFitWidth(15);
+                        imagenMina.setFitHeight(15);
+
+                        cuadro.setGraphic(imagenMina);
                     } else {
                         // Si tiene minas alrededor, le ponemos el número.
                         if (juego.hayMinasAlrededor(x, y)) {
@@ -323,8 +329,16 @@ public class FXMLPantallaDificilController implements Initializable {
                         imgBandera2.setFitHeight(15);
 
                         cuadro.setGraphic(imgBandera2);
+
+                        juego.marcarBanderaPorInterrogacion(x, y);
+                    } else if (juego.isPreguntamarcada() && juego.getMarcarBanderaPorInterrogacion(x, y)) {
+                        ImageView imgBandera2 = new ImageView(imagenPregunta);
+                        imgBandera2.setFitWidth(15);
+                        imgBandera2.setFitHeight(15);
+
+                        cuadro.setGraphic(imgBandera2);
+                        juego.setPreguntamarcada(true);
                     } else {
-                        // cuadro.getStyleClass().remove("casillaBandera");
                         cuadro.setGraphic(null);
                     }
                 }
@@ -362,14 +376,9 @@ public class FXMLPantallaDificilController implements Initializable {
     public void gameOverMostrarSolucion() {
         for (int i = 0; i < juego.alto(); i++) {
             for (int j = 0; j < juego.ancho(); j++) {
-                if (juego.tieneBandera(j, i)) {
-                    if (!juego.hayMina(j, i)) {
-                        // Mal
-                    }
-                } else if (juego.hayMina(j, i)) {
-                    // Mal
-                }
+                juego.cavar2(i, j);
             }
+
         }
     }
 

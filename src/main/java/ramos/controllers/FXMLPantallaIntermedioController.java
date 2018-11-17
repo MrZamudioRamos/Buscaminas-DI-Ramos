@@ -350,8 +350,8 @@ public class FXMLPantallaIntermedioController implements Initializable {
                     if (juego.hayMina(x, y)) {
                         cuadro.getStyleClass().add("casillaMina");
                         ImageView imagenMina = new ImageView(this.imagenMina);
-                        imagenMina.setFitWidth(25);
-                        imagenMina.setFitHeight(25);
+                        imagenMina.setFitWidth(15);
+                        imagenMina.setFitHeight(15);
 
                         cuadro.setGraphic(imagenMina);
                     } else {
