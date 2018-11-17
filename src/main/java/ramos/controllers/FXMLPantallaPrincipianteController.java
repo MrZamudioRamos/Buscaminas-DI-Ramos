@@ -45,14 +45,12 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     @FXML
     protected GridPane fxGridPaneMinasPrincipiante;
 
-    private final int rows = 8;
-    private final int col = 8;
     private FXMLPantallaPrincipalController principal;
     private FXMLPantallaElegirController elegir;
 
     @FXML
     protected Text fxText;
-    
+
     Temporizador temp = new Temporizador();
 
     public Label getFxLabelNumeroMinasPrincipiante() {
@@ -200,6 +198,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -211,6 +210,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -222,6 +222,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -233,6 +234,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -272,8 +274,9 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     } // BANDERA
                     else if (p.getButton() == MouseButton.SECONDARY) {
                         juego.marcarBandera(casilla.getX(), casilla.getY());
-                    }else if(p.getButton() == MouseButton.SECONDARY && juego.tieneBandera(casilla.getX(), casilla.getY())){
-                        juego.marcarInterrogacion(casilla.getX(),casilla.getY());
+                        juego.setPreguntamarcada(true);
+                    } else if (p.getButton() == MouseButton.SECONDARY && juego.isPreguntamarcada()) {
+                        juego.marcarInterrogacion(casilla.getX(), casilla.getY());
                     }
                     actualizarTablero();
                 });
@@ -297,6 +300,8 @@ public class FXMLPantallaPrincipianteController implements Initializable {
 //        }
     }
     Image imgBandera = new Image("/images/bandera.png");
+    Image imagenMina = new Image("/images/mina.png");
+    Image imagenPregunta = new Image("/images/pregunta.png");
 
     public void actualizarTablero() {
         /*
@@ -317,6 +322,11 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
                         cuadro.getStyleClass().add("casillaMina");
+                        ImageView imagenMina = new ImageView(this.imagenMina);
+                        imagenMina.setFitWidth(25);
+                        imagenMina.setFitHeight(25);
+
+                        cuadro.setGraphic(imagenMina);
                     } else {
                         // Si tiene minas alrededor, le ponemos el número.
                         if (juego.hayMinasAlrededor(x, y)) {
@@ -329,12 +339,20 @@ public class FXMLPantallaPrincipianteController implements Initializable {
                     if (juego.tieneBandera(x, y)) {
                         // cuadro.getStyleClass().add("casillaBandera");
                         ImageView imgBandera2 = new ImageView(imgBandera);
-                        imgBandera2.setFitWidth(MAX_VALUE);
-                        imgBandera2.setFitHeight(MAX_VALUE);
+                        imgBandera2.setFitWidth(15);
+                        imgBandera2.setFitHeight(15);
 
                         cuadro.setGraphic(imgBandera2);
-                    } else {
-                        // cuadro.getStyleClass().remove("casillaBandera");
+
+                        juego.marcarBanderaPorInterrogacion(x, y);
+                    } else if (juego.isPreguntamarcada() && juego.getMarcarBanderaPorInterrogacion(x, y)) {
+                        ImageView imgBandera2 = new ImageView(imagenPregunta);
+                        imgBandera2.setFitWidth(15);
+                        imgBandera2.setFitHeight(15);
+
+                        cuadro.setGraphic(imgBandera2);
+                        juego.setPreguntamarcada(true);
+                    }else{
                         cuadro.setGraphic(null);
                     }
                 }
@@ -371,7 +389,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         for (int i = 0; i < juego.alto(); i++) {
             for (int j = 0; j < juego.ancho(); j++) {
                 if (juego.tieneBandera(j, i)) {
-                    
+
                     if (!juego.hayMina(j, i)) {
                         // Mal
                     }

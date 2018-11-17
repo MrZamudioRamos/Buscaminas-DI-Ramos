@@ -15,7 +15,10 @@ public class Buscaminas {
     private int[][] minas_alrededor;
     private boolean[][] destapadas;
     private boolean[][] banderas;
-    private boolean [][] interrogacion;
+    private boolean[][] preguntas;
+    private boolean[][] banderamarcada;
+    private boolean preguntamarcada;
+    private boolean[][] interrogacion;
 
     private int vidas;
     private int totalMinas;
@@ -60,6 +63,8 @@ public class Buscaminas {
         destapadas = new boolean[y][x];
         banderas = new boolean[y][x];
         interrogacion = new boolean[x][y];
+        banderamarcada = new boolean[x][y];
+        preguntamarcada = false;
 
         this.vidas = vidas;
         vidasRestantes = vidas;
@@ -69,7 +74,7 @@ public class Buscaminas {
 
         casillasTapadasRestantes = ancho * alto - totalMinas;
         minasSinBanderaRestantes = minas;
-        
+
         soportaInterrogacion = false;
         soportaBanderas = false;
         gameOver = false;
@@ -130,30 +135,23 @@ public class Buscaminas {
     }
 
     public void marcarInterrogacion(int x, int y) {
-        
+
         // Si se ha configurado para que el juego soporte interrogaciones, se ejecutar 
         // el m todo. De lo contrario, no debe hacer nada.
         if (soportaInterrogacion && !gameOver) {
-            interrogacion[y][x] = !interrogacion[y][x];
-
-            // Al poner una interrogacion, calculo si es correcta o no para saber si
-            // el juego ha terminado.
-            if (tieneBandera(x, y)) {
-                minasSinBanderaRestantes++;
-            } else if (hayMina(x, y) && !tieneBandera(x, y)) {
-                minasSinBanderaRestantes++;
-            } else if (!hayMina(x, y) && tieneBandera(x, y)) {
-                minasSinBanderaRestantes++;
-            } else if (!hayMina(x, y) && !tieneBandera(x, y)) {
-                minasSinBanderaRestantes--;
-            }
-
-            if (minasSinBanderaRestantes == 0 && casillasTapadasRestantes == 0) {
-                gameOver = true;
-                ganador = true;
-            }
+            interrogacion[y][x] =  true;
 
         }
+    }
+
+    public void marcarBanderaPorInterrogacion(int x, int y) {
+        
+        banderamarcada[x][y]= true;
+    }
+    
+    public boolean getMarcarBanderaPorInterrogacion(int x, int y) {
+        
+        return banderamarcada[x][y];
     }
 
     /**
@@ -167,6 +165,15 @@ public class Buscaminas {
      */
     public boolean tieneBandera(int x, int y) {
         return banderas[y][x];
+    }
+
+    public boolean tienePregunta(int x, int y) {
+
+        return interrogacion[y][x];
+    }
+
+    public void setInterrogacion(boolean[][] interrogacion) {
+        this.preguntas = interrogacion;
     }
 
     /**
@@ -503,5 +510,29 @@ public class Buscaminas {
     public void soportaBanderas(boolean hayBanderas) {
         this.soportaBanderas = hayBanderas;
     }
+
+    public void soportaInterrogacion(boolean hayInterrogacion) {
+        this.soportaInterrogacion = hayInterrogacion;
+    }
+
+    public boolean getSoportaInterrogacion() {
+        return this.soportaInterrogacion;
+    }
+
+    public boolean[][] getBanderamarcada() {
+        return banderamarcada;
+    }
+
+
+    public boolean isPreguntamarcada() {
+        return preguntamarcada;
+    }
+
+    public void setPreguntamarcada(boolean preguntamarcada) {
+        this.preguntamarcada = preguntamarcada;
+    }
+    
+    
+    
 
 }

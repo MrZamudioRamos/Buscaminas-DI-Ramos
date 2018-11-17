@@ -340,6 +340,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
                         cuadro.getStyleClass().add("casillaMina");
+                        
                     } else {
                         // Si tiene minas alrededor, le ponemos el número.
                         if (juego.hayMinasAlrededor(x, y)) {
