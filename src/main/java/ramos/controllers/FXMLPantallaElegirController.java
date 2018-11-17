@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import ramos.clases.Juego;
 
@@ -23,6 +24,7 @@ public class FXMLPantallaElegirController implements Initializable {
     private FXMLPantallaPrincipianteController principiante;
     private FXMLPantallaIntermedioController intermedio;
     private FXMLPantallaDificilController dificil;
+    
 
     Juego j = new Juego();
 
@@ -218,18 +220,35 @@ public class FXMLPantallaElegirController implements Initializable {
         }
         return mines;
     }
+    
+    public void alerta(Alert.AlertType tipo, String mensaje) {
+        Alert temp = new Alert(tipo);
+        temp.setTitle("Nota informativa");
+        temp.setHeaderText("Buscaminas");
+        temp.setContentText(mensaje);
+        temp.showAndWait();
+    }
+    
+    public void alerta(String mensaje) {
+        alerta(Alert.AlertType.INFORMATION, mensaje);
+    }
 
     public void clickSalirElegir() {
-        if (fxElegirPequeño.isSelected()) {
-            principal.precargarPantallaPrincipiante(darMinas());
-            principal.cargarNuevaPantallaPrincipiante();
-        } else if (fxElegirMediano.isSelected()) {
-            principal.precargarPantallaIntermedio(darMinas());
-            principal.cargarPantallaIntermedio();
-        } else if (fxElegirGrande.isSelected()) {
-            principal.precargarPantallaDificil(darMinas());
-            principal.cargarNuevaPantallaDificil();
-        }
+        if ((fxElegirFacil.isSelected() || fxElegirMedio.isSelected() || fxElegirDificil.isSelected())
+                && fxElegirPequeño.isSelected() || fxElegirMediano.isSelected() || fxElegirGrande.isSelected()) {
+            if (fxElegirPequeño.isSelected()) {
+                principal.precargarPantallaPrincipiante(darMinas());
+                principal.cargarNuevaPantallaPrincipiante();
+            } else if (fxElegirMediano.isSelected()) {
+                principal.precargarPantallaIntermedio(darMinas());
+                principal.cargarNuevaPantallaIntermedio();
+            } else if (fxElegirGrande.isSelected()) {
+                principal.precargarPantallaDificil(darMinas());
+                principal.cargarNuevaPantallaDificil();
+            }
+        }else{
+            alerta("Selecciona las 2 opciones");
+        }      
     }
 
     public void clickAtrasElegir() {

@@ -23,10 +23,9 @@ public class Temporizador {
 
         task = new TimerTask() {
             @Override
-            public void run() {
-                seconds++;
+            public void run() {              
                 fxText.setText("" + seconds);
-                
+                seconds++;
             }
         };
     }

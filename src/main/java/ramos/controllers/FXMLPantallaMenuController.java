@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import ramos.core.NumeroDeVidasFueraDeRangoException;
 
 /**
  * FXML Controller class
@@ -28,6 +29,8 @@ public class FXMLPantallaMenuController implements Initializable {
     @FXML
     private javafx.scene.control.Button closeButton;
     
+    private FXMLPantallaPrincipianteController fXMLPantallaPrincipianteController;
+    
     @FXML 
     private AnchorPane anchor;
 
@@ -41,8 +44,9 @@ public class FXMLPantallaMenuController implements Initializable {
         this.principal = principal;
     }
     
-    public void clickJugar() {
-        principal.cargarPantallaOpciones();
+    public void clickJugar() throws NumeroDeVidasFueraDeRangoException {
+        principal.precargarPantallaPrincipiante(12);
+        principal.cargarNuevaPantallaPrincipiante();
     }
 
     public void clickPersonalizar() {

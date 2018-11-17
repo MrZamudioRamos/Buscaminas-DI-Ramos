@@ -88,7 +88,7 @@
             <RowConstraints minHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button layoutX="20.0" layoutY="347.0" mnemonicParsing="false" onAction="#clickReiniciarDificil" prefHeight="39.0" prefWidth="81.0" text="REINICIAR" />
+      <Button fx:id="fxReset" layoutX="20.0" layoutY="347.0" mnemonicParsing="false" onAction="#clickReiniciarDificil" prefHeight="39.0" prefWidth="81.0" text="INICIAR" />
       <Button layoutX="20.0" layoutY="411.0" mnemonicParsing="false" onAction="#clickSalirDificil" prefHeight="39.0" prefWidth="81.0" text="SALIR" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="39.0" layoutX="17.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="27.0" layoutX="10.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" width="126.0" />

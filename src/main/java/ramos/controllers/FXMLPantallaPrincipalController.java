@@ -285,6 +285,16 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinWidth(600);
 
     }
+    
+    @FXML
+    public void cargarNuevaPantallaIntermedio() {
+        String mina = elegirController.Tablero();
+        intermedioController.fxLabelNumeroMinasIntermedio.setText(mina);
+        fxRoot.setCenter(pantallaIntermedio);
+//        fxRoot.setMinHeight(400);
+//        fxRoot.setMinWidth(600);
+
+    }
 
     @FXML
     public void cargarPantallaDificil() {

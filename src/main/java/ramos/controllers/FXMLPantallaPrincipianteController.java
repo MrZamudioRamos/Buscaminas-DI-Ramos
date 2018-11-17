@@ -73,7 +73,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
     }
 
     public void clickSalirPrincipiante() {
-        principal.cargarPantallaElegir();
+        principal.cargarPantallaMenu();
     }
 
     private Node[][] casillas;
@@ -157,6 +157,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
         Tablero();
         start();
         fxReset.setDisable(true);
+        fxGridPaneMinasPrincipiante.setDisable(false);
     }
 
     /**
@@ -165,6 +166,7 @@ public class FXMLPantallaPrincipianteController implements Initializable {
      * @return
      */
     public void Tablero() {
+        fxGridPaneMinasPrincipiante.setDisable(true);
         switch (minas) {
             case 12:
                 try {

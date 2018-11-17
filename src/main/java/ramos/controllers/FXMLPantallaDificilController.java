@@ -49,6 +49,9 @@ public class FXMLPantallaDificilController implements Initializable {
 
     @FXML
     protected Text fxText;
+    
+    @FXML
+    protected Button fxReset;
 
     public Label getFxLabelNumeroMinasDificil() {
         return fxLabelNumeroMinasDificil;
@@ -113,8 +116,9 @@ public class FXMLPantallaDificilController implements Initializable {
     public void clickReiniciarDificil() {
         juego.reset();
         Tablero();
-        temp.setSeconds(0);
         start();
+        fxReset.setDisable(true);
+        fxGridPaneMinasDificil.setDisable(false);
     }
 
     public void start() {
@@ -124,7 +128,7 @@ public class FXMLPantallaDificilController implements Initializable {
     }
 
     public void clickSalirDificil() {
-        principal.cargarPantallaElegir();
+        principal.cargarPantallaMenu();
     }
 
     public void setMinas(int dificultad) {
@@ -146,6 +150,7 @@ public class FXMLPantallaDificilController implements Initializable {
     }
 
     public void Tablero() {
+        fxGridPaneMinasDificil.setDisable(true);
         switch (minas) {
             case 96:
                 try {
@@ -346,7 +351,9 @@ public class FXMLPantallaDificilController implements Initializable {
             }
         }
         if (juego.isGameOver()) {
+             temp.stop();
             gameOverMostrarSolucion();
+            fxReset.setDisable(false);
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
             } else {

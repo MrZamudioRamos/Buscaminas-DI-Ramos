@@ -53,6 +53,9 @@ public class FXMLPantallaIntermedioController implements Initializable {
 
     @FXML
     protected Text fxText;
+    
+    @FXML
+    protected Button fxReset;
 
     public Label getFxLabelNumeroMinasIntermedio() {
         return fxLabelNumeroMinasIntermedio;
@@ -94,14 +97,15 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
 
     public void clickReiniciarIntermedio() {
-        juego.reset();
+         juego.reset();
         Tablero();
-        temp.setSeconds(0);
         start();
+        fxReset.setDisable(true);
+        fxGridPaneMinasIntermedio.setDisable(false);
     }
 
     public void clickSalirIntermedio() {
-        principal.cargarPantallaElegir();
+        principal.cargarPantallaMenu();
     }
 
     private Node[][] casillas;
@@ -188,6 +192,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
     }
 
     public void Tablero() {
+        fxGridPaneMinasIntermedio.setDisable(true);
         switch (minas) {
             case 51:
                 try {
@@ -387,7 +392,9 @@ public class FXMLPantallaIntermedioController implements Initializable {
             }
         }
          if (juego.isGameOver()) {
+             temp.stop();
             gameOverMostrarSolucion();
+            fxReset.setDisable(false);
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
             } else {
