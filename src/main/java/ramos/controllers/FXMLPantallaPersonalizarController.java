@@ -6,10 +6,14 @@
 package ramos.controllers;
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 /**
@@ -18,6 +22,8 @@ import javafx.scene.control.TextField;
  * @author Ricardo
  */
 public class FXMLPantallaPersonalizarController implements Initializable {
+
+    int alto, ancho, total;
 
     private FXMLPantallaPrincipalController principal;
 
@@ -38,11 +44,12 @@ public class FXMLPantallaPersonalizarController implements Initializable {
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
         this.principal = principal;
     }
-    @FXML
-    private TextField fxTextFieldAncho;
 
     @FXML
-    private TextField fxTextFieldAlto;
+    private TextField fxAncho;
+
+    @FXML
+    private TextField fxAlto;
 
     @FXML
     private RadioButton fxPersonalizarFacil;
@@ -53,49 +60,99 @@ public class FXMLPantallaPersonalizarController implements Initializable {
     @FXML
     private RadioButton fxPersonalizarDificil;
 
-    public int getValorAncho() {
+    @FXML
+    private Slider fxAnchoSlider;
 
-        int ancho = Integer.parseInt(fxTextFieldAncho.getText());
+    @FXML
+    private Slider fxAltoSlider;
 
-        return ancho;
+    private static final int initValueAncho = 8;
+    private static final int initValueAlto = 8;
+
+    public void datiyos() {
+        fxAltoSlider.setMin((int) 8);
+        fxAltoSlider.setMax((int) 24);
+
+        fxAnchoSlider.setMin((int) 8);
+        fxAnchoSlider.setMax((int) 24);
+
+        fxAltoSlider.valueProperty().addListener((obs, oldval, newVal)
+                -> fxAltoSlider.setValue(newVal.intValue()));
+
+        fxAnchoSlider.valueProperty().addListener((obs, oldval, newVal)
+                -> fxAnchoSlider.setValue(newVal.intValue()));
+
+        fxAncho.setText(new Double(initValueAlto).toString());
+        fxAlto.setText(new Double(initValueAncho).toString());
+
+        fxAlto.setDisable(true);
+        fxAncho.setDisable(true);
+
+        fxAncho.textProperty().bindBidirectional(fxAnchoSlider.valueProperty(), NumberFormat.getNumberInstance());
+        fxAlto.textProperty().bindBidirectional(fxAltoSlider.valueProperty(), NumberFormat.getNumberInstance());
+
     }
 
-    public int getValorAlto() {
-
-        int alto = Integer.parseInt(fxTextFieldAlto.getText());
-
+    public int getAlto() {
+        alto = Integer.parseInt(fxAlto.getText());
         return alto;
     }
 
-    public int darMinas() {
-        int mines = 0;
-
-        if (fxPersonalizarFacil.isSelected()) {
-            mines = 12;
-        } else if (fxPersonalizarMedio.isSelected()) {
-            mines = 16;
-        } else if (fxPersonalizarDificil.isSelected()) {
-            mines = 21;
-        }
-        return mines;
-    }
-
-    public String getDificultad() {
-        String mines = "";
-        if (fxPersonalizarFacil.isSelected()) {
-            mines = "12";
-        } else if (fxPersonalizarMedio.isSelected()) {
-            mines = "16";
-        } else if (fxPersonalizarDificil.isSelected()) {
-            mines = "21";
-        }
-        return mines;
+    public int getAncho() {
+        ancho = Integer.parseInt(fxAncho.getText());
+        return ancho;
     }
 
     public void clickJugar() {
 
-        principal.precargarPantallaJuegoPersonalizado();
-        principal.cargarPantallaJuegoPersonalizado();
+        if (fxPersonalizarDificil.isSelected() || fxPersonalizarFacil.isSelected() || fxPersonalizarMedio.isSelected()) {
+            if (fxPersonalizarFacil.isSelected()) {
+                principal.precargarPantallaJuegoPersonalizado(getMina(), getAlto(), getAncho());
+                principal.cargarNuevaPantallaPersonalizado();
+            } else if (fxPersonalizarMedio.isSelected()) {
+                principal.precargarPantallaJuegoPersonalizado(getMina(), getAlto(), getAncho());
+                principal.cargarNuevaPantallaPersonalizado();
+            } else if (fxPersonalizarDificil.isSelected()) {
+                principal.precargarPantallaJuegoPersonalizado(getMina(), getAlto(), getAncho());
+                principal.cargarNuevaPantallaPersonalizado();
+            }
+
+        } else {
+            alerta("Selecciona la dificultad");
+        }
+
+    }
+
+    public int getMina() {
+
+        total = getAlto() * getAncho();
+
+        int mina = 0;
+
+        if (fxPersonalizarDificil.isSelected() || fxPersonalizarFacil.isSelected() || fxPersonalizarMedio.isSelected()) {
+            if (fxPersonalizarFacil.isSelected()) {
+                mina = total / 5;
+
+            } else if (fxPersonalizarMedio.isSelected()) {
+                mina = total / 4;
+
+            } else if (fxPersonalizarDificil.isSelected()) {
+                mina = total / 3;
+            }
+        }
+        return mina;
+    }
+
+    public void alerta(Alert.AlertType tipo, String mensaje) {
+        Alert temp = new Alert(tipo);
+        temp.setTitle("Nota informativa");
+        temp.setHeaderText("Buscaminas");
+        temp.setContentText(mensaje);
+        temp.showAndWait();
+    }
+
+    public void alerta(String mensaje) {
+        alerta(Alert.AlertType.INFORMATION, mensaje);
     }
 
     public void clickAtras() {
@@ -109,7 +166,7 @@ public class FXMLPantallaPersonalizarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        datiyos();
     }
 
 }

@@ -110,6 +110,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
         fxReset.setDisable(true);
         fxGridPaneMinasIntermedio.setDisable(false);
     }
+    
 
     public void clickSalirIntermedio() {
         principal.cargarPantallaMenu();

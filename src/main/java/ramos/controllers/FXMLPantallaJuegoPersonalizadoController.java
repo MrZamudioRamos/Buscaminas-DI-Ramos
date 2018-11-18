@@ -34,10 +34,10 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     @FXML
-    private final GridPane fxGridPanePersonalizado = new GridPane();
+    private GridPane fxGridPanePersonalizado;
 
     private FXMLPantallaPersonalizarController personalizar;
-    
+
     private FXMLPantallaPrincipalController principal;
 
     public FXMLPantallaPrincipalController getPrincipal() {
@@ -47,8 +47,6 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     public void setPrincipal(FXMLPantallaPrincipalController principal) {
         this.principal = principal;
     }
-    
-    
 
     public FXMLPantallaPersonalizarController getPersonalizar() {
         return personalizar;
@@ -61,8 +59,8 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     private Buscaminas juego;
 
-    private int ancho = 16;
-    private int alto = 18;
+    private int ancho = 8;
+    private int alto = 8;
     private int minas = 12;
     private int vidas = 1;
 
@@ -109,11 +107,12 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     public void Tablero() {
 
         try {
-            juegoNuevo(getAncho(), getAlto(), getMinas(), vidas);
+            juegoNuevo(ancho, alto, minas, vidas);
         } catch (NumeroDeVidasFueraDeRangoException ex) {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
     }
 
     Image imgBandera = new Image("/images/bandera.png");
@@ -127,9 +126,11 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
         }
 
         construirTablero();
+        
     }
 
     public void construirTablero() {
+        
         /*
 		 * Primero limpiamos todo lo que hay dentro del GridPane y del array
 		 * casillas
@@ -270,48 +271,16 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     }
 
     public void clickReiniciarPersonalizado() {
-
+        juego.reset();
     }
 
     public void clickSalirPersonalizado() {
-
+        principal.cargarPantallaMenu();
     }
 
-//    public GridPane obtenerDimensiones() {
-//
-//        int numeroAlto = personalizar.getValorAlto();
-//
-//        int numeroAncho = personalizar.getValorAncho();
-//        
-//        return null;
-//        
-//    }
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-//        fxGridPanePersonalizado.setLayoutX(324);
-//        fxGridPanePersonalizado.setLayoutY(201);
-//        
-//        int numFilas = personalizar.getValorAncho();
-//        int numColumnas = personalizar.getValorAlto();
-//        for (int filas = 0; filas <= numFilas; filas++) {
-//            RowConstraints rc = new RowConstraints();
-//            rc.setVgrow(Priority.ALWAYS);
-//            rc.setFillHeight(true);
-//            fxGridPanePersonalizado.getRowConstraints().add(rc);
-//        }
-//        for (int columnas = 0; columnas <= numColumnas; columnas++) {
-//            ColumnConstraints cc = new ColumnConstraints();
-//            cc.setHgrow(Priority.ALWAYS);
-//            cc.setFillWidth(true);
-//            fxGridPanePersonalizado.getColumnConstraints().add(cc);
-//        }
 
-        Tablero();
-        
     }
 
 }
