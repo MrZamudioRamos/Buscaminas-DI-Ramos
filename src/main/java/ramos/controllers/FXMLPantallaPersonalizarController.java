@@ -95,7 +95,7 @@ public class FXMLPantallaPersonalizarController implements Initializable {
     
     public int getAlto(){
         alto = Integer.parseInt(fxAlto.getText());
-        return alto;
+        return  alto;
     }
     
     public int getAncho(){
@@ -104,7 +104,6 @@ public class FXMLPantallaPersonalizarController implements Initializable {
     }
 
     public int clickJugar() {
-      
         getAlto();
         getAncho();
         total = alto*ancho;

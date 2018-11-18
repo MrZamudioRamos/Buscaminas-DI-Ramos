@@ -59,9 +59,9 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     private Buscaminas juego;
 
-    private int ancho = 10;
-    private int alto = 10;
-    private int minas = 11;
+    private int ancho = 16;
+    private int alto = 18;
+    private int minas = 12;
     private int vidas = 1;
 
     public Node[][] getCasillas() {
@@ -277,7 +277,6 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         Tablero();
     }
 
