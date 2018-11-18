@@ -37,7 +37,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     private GridPane fxGridPanePersonalizado;
 
     private FXMLPantallaPersonalizarController personalizar;
-    
+
     private FXMLPantallaPrincipalController principal;
 
     public FXMLPantallaPrincipalController getPrincipal() {
@@ -59,8 +59,8 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     private Buscaminas juego;
 
-    private int ancho = 16;
-    private int alto = 18;
+    private int ancho = 8;
+    private int alto = 8;
     private int minas = 12;
     private int vidas = 1;
 
@@ -107,11 +107,12 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     public void Tablero() {
 
         try {
-            juegoNuevo(getAncho(), getAlto(), getMinas(), vidas);
+            juegoNuevo(ancho, alto, minas, vidas);
         } catch (NumeroDeVidasFueraDeRangoException ex) {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
     }
 
     Image imgBandera = new Image("/images/bandera.png");
@@ -125,9 +126,11 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
         }
 
         construirTablero();
+        
     }
 
     public void construirTablero() {
+        
         /*
 		 * Primero limpiamos todo lo que hay dentro del GridPane y del array
 		 * casillas
@@ -268,7 +271,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     }
 
     public void clickReiniciarPersonalizado() {
-
+        juego.reset();
     }
 
     public void clickSalirPersonalizado() {
@@ -277,7 +280,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Tablero();
+
     }
 
 }

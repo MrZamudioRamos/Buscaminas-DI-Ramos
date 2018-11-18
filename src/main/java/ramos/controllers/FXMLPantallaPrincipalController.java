@@ -237,9 +237,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     @FXML
-    public void precargarPantallaJuegoPersonalizado(int minas) {
+    public void precargarPantallaJuegoPersonalizado(int minas, int alto, int ancho) {
 
         try {
             FXMLLoader loaderMenu = new FXMLLoader(
@@ -250,12 +249,18 @@ public class FXMLPantallaPrincipalController implements Initializable {
                     = loaderMenu.getController();
 
             juegoPersonalizadoController.setPrincipal(this);
+            juegoPersonalizadoController.setMinas(minas);
+            juegoPersonalizadoController.setAlto(alto);
+            juegoPersonalizadoController.setAncho(ancho);
+            juegoPersonalizadoController.Tablero();
 
         } catch (IOException ex) {
 
             Logger.getLogger(FXMLPantallaJuegoPersonalizadoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+
 
     @FXML
     public void cargarPantallaMenu() {
