@@ -5,6 +5,7 @@
  */
 package ramos.controllers;
 
+import java.io.IOException;
 import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
 import java.util.Optional;
@@ -29,6 +30,7 @@ import ramos.clases.Temporizador;
 import ramos.core.Buscaminas;
 import ramos.core.Casilla;
 import ramos.core.DemasiadasMinasException;
+import ramos.core.Ficheros;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
 import ramos.core.Usuario;
 
@@ -46,7 +48,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
     private FXMLPantallaPrincipalController principal;
 
     private FXMLPantallaElegirController elegir;
-
+    
     private FXMLPantallaPersonalizarController personalizar;
     private int rows = 16, col = 16;
 
@@ -318,7 +320,11 @@ public class FXMLPantallaIntermedioController implements Initializable {
                     }else if (p.getButton() == MouseButton.SECONDARY && juego.isPreguntamarcada()) {
                         juego.marcarInterrogacion(casilla.getX(), casilla.getY());
                     }
-                    actualizarTablero();
+                    try {
+                        actualizarTablero();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
 
                 fxGridPaneMinasIntermedio.add(casilla, x, y);
@@ -340,7 +346,7 @@ public class FXMLPantallaIntermedioController implements Initializable {
 //        }
     }
 
-    public void actualizarTablero() {
+    public void actualizarTablero() throws IOException {
         /*
 		 * Este método debe actualizar el estado de cada casilla en el tablero.
 		 * Se le debe llamar cada vez que se realice alguna opción.
@@ -405,6 +411,9 @@ public class FXMLPantallaIntermedioController implements Initializable {
                 user.setNombre(texto());
                 user.setTiempo(temp.getSeconds());
                 System.out.println(user.toString());
+                Ficheros arch = new Ficheros();
+                String ra = principal.getRank();
+                arch.Escribir(ra, user);
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
                 gameOverMostrarSolucion();

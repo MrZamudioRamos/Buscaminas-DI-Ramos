@@ -5,8 +5,13 @@
  */
 package ramos.controllers;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ramos.core.Ficheros;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
+import ramos.core.Usuario;
 
 /**
  * FXML Controller class
@@ -28,7 +35,37 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     protected BorderPane fxRoot;
 
-   
+    Ficheros fich = new Ficheros();
+
+    protected ArrayList<Usuario> ez = new ArrayList<>();
+    protected ArrayList<Usuario> med = new ArrayList<>();
+    protected ArrayList<Usuario> dif = new ArrayList<>();
+    protected ArrayList<Usuario> pers = new ArrayList<>();
+
+    protected ArrayList<String> ezrank = new ArrayList<>();
+    protected ArrayList<String> medrank = new ArrayList<>();
+    protected ArrayList<String> difrank = new ArrayList<>();
+    protected ArrayList<String> persrank = new ArrayList<>();
+
+    public void Rankings() {
+        ezrank.add("PeqFa.dat");
+        ezrank.add("PeqMe.dat");
+        ezrank.add("PeqDi.dat");
+        
+        medrank.add("MedFa.dat");
+        medrank.add("MedMe.dat");
+        medrank.add("MedDif.dat");
+        
+        difrank.add("DifFa.dat");
+        difrank.add("DifMe.dat");
+        difrank.add("DifDi.dat");
+        
+        persrank.add("PersFa.dat");
+        persrank.add("PersMe.dat");
+        persrank.add("PersDi.dat");
+        
+    }
+
     private FXMLPantallaIntermedioController intermedio;
 
     private FXMLPantallaPersonalizarController personalizar;
@@ -55,6 +92,16 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private FXMLPantallaAyudaController AyudaController;
     private AnchorPane pantallaRanking;
     private FXMLPantallaRankingController RankingController;
+    private String rank;
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+    
 
     public FXMLPantallaPersonalizarController getPersonalizar() {
         return personalizar;
@@ -64,8 +111,40 @@ public class FXMLPantallaPrincipalController implements Initializable {
         this.personalizar = personalizar;
     }
 
+    //FICHEROS
+    public ArrayList<Usuario> getEz() {
+        return ez;
+    }
+
+    public void setEz(ArrayList<Usuario> ez) {
+        this.ez = ez;
+    }
+
+    public ArrayList<Usuario> getMed() {
+        return med;
+    }
+
+    public void setMed(ArrayList<Usuario> med) {
+        this.med = med;
+    }
+
+    public ArrayList<Usuario> getDif() {
+        return dif;
+    }
+
+    public void setDif(ArrayList<Usuario> dif) {
+        this.dif = dif;
+    }
+
+    public ArrayList<Usuario> getPers() {
+        return pers;
+    }
+
+    public void setPers(ArrayList<Usuario> pers) {
+        this.pers = pers;
+    }
+
     //PRECARGAR PANTALLAS
-    
     @FXML
     public void precargarPantallaMenu() {
 
@@ -83,7 +162,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     public void precargarPantallaAyuda() {
 
@@ -101,6 +180,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @FXML
     public void precargarPantallaRanking() {
 
@@ -304,7 +384,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinWidth(600);
 
     }
-    
+
     @FXML
     public void cargarNuevaPantallaIntermedio() {
         String mina = elegirController.Tablero();
@@ -321,7 +401,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinHeight(643);
 //        fxRoot.setMinWidth(840);
         fxRoot.setCenter(pantallaDificil);
-        
+
     }
 
     @FXML
@@ -331,7 +411,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinHeight(800);
 //        fxRoot.setMinWidth(1000);
         fxRoot.setCenter(pantallaDificil);
-        
+
     }
 
     @FXML
@@ -340,7 +420,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinHeight(481);
 //        fxRoot.setMinWidth(640);
         fxRoot.setCenter(pantallaIntermedio);
-        
+
     }
 
     @FXML
@@ -354,17 +434,17 @@ public class FXMLPantallaPrincipalController implements Initializable {
 //        fxRoot.setMinHeight(400);
 //        fxRoot.setMinWidth(600);
     }
-    
+
     @FXML
     public void cargarPantallaAyuda() {
         fxRoot.setCenter(pantallaAyuda);
-        
+
     }
-    
+
     @FXML
     public void cargarPantallaRanking() {
         fxRoot.setCenter(pantallaRanking);
-        
+
     }
 
     public void clickInicio() {
@@ -379,23 +459,61 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     }
 
+    public void ArchivosRanking() throws FileNotFoundException, IOException {
+        //verifica los rankings del pequeño
+        File archivo;
+        BufferedWriter bw;
+        for (int i = 0; i < ezrank.size(); i++) {
+            archivo = new File(ezrank.get(i));
+            if(!archivo.exists()){
+                bw = new BufferedWriter(new FileWriter(archivo));
+            }
+        }
+        //verifica los rankings del mediano
+        for (int i = 0; i < medrank.size(); i++) {
+            archivo = new File(medrank.get(i));
+            if(!archivo.exists()){
+                bw = new BufferedWriter(new FileWriter(archivo));
+            }
+        }
+        //verifica los rankings del grande
+        for (int i = 0; i < difrank.size(); i++) {
+            archivo = new File(difrank.get(i));
+            if(!archivo.exists()){
+                bw = new BufferedWriter(new FileWriter(archivo));
+            }
+        }
+        //verifica los rankings del personalizado
+        for (int i = 0; i < persrank.size(); i++) {
+            archivo = new File(persrank.get(i));
+            if(!archivo.exists()){
+                bw = new BufferedWriter(new FileWriter(archivo));
+            }
+        }
+
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Rankings();
         precargarPantallaMenu();
         precargarPantallaRanking();
         precargarPantallaAyuda();
         precargarPantallaOpciones();
-        // precargarPantallaDificil();
         precargarPantallaElegir();
-        
-        //precargarPantallaIntermedio();
         precargarPantallaPersonalizar();
-        //precargarPantallaPrincipiante();
         precargarPantallaJuegoPersonalizado();
         cargarPantallaMenu();
+        try {
+            ArchivosRanking();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

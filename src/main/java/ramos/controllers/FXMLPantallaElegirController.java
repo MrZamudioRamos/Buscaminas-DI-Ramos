@@ -24,7 +24,6 @@ public class FXMLPantallaElegirController implements Initializable {
     private FXMLPantallaPrincipianteController principiante;
     private FXMLPantallaIntermedioController intermedio;
     private FXMLPantallaDificilController dificil;
-    
 
     Juego j = new Juego();
 
@@ -129,7 +128,7 @@ public class FXMLPantallaElegirController implements Initializable {
     public String Tablero() {
 
         String mines = null;
-        
+
         if (fxElegirPequeño.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
@@ -177,9 +176,9 @@ public class FXMLPantallaElegirController implements Initializable {
     }
 
     public int darMinas() {
-        
+
         int mines = 0;
-        
+
         if (fxElegirPequeño.isSelected()) {
 
             if (fxElegirFacil.isSelected()) {
@@ -220,7 +219,7 @@ public class FXMLPantallaElegirController implements Initializable {
         }
         return mines;
     }
-    
+
     public void alerta(Alert.AlertType tipo, String mensaje) {
         Alert temp = new Alert(tipo);
         temp.setTitle("Nota informativa");
@@ -228,27 +227,62 @@ public class FXMLPantallaElegirController implements Initializable {
         temp.setContentText(mensaje);
         temp.showAndWait();
     }
-    
+
     public void alerta(String mensaje) {
         alerta(Alert.AlertType.INFORMATION, mensaje);
     }
 
     public void clickSalirElegir() {
+        String arch;
         if ((fxElegirFacil.isSelected() || fxElegirMedio.isSelected() || fxElegirDificil.isSelected())
                 && fxElegirPequeño.isSelected() || fxElegirMediano.isSelected() || fxElegirGrande.isSelected()) {
             if (fxElegirPequeño.isSelected()) {
                 principal.precargarPantallaPrincipiante(darMinas());
+                if (fxElegirFacil.isSelected()) {
+                    arch = "PeqFa.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirMedio.isSelected()) {
+                    arch = "PeqMe.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirDificil.isSelected()) {
+                    arch = "PeqDi.dat";
+                    principal.setRank(arch);
+                }
                 principal.cargarNuevaPantallaPrincipiante();
             } else if (fxElegirMediano.isSelected()) {
+
+                if (fxElegirFacil.isSelected()) {
+                    arch = "MedFa.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirMedio.isSelected()) {
+                    arch = "MedMe.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirDificil.isSelected()) {
+                    arch = "MedDi.dat";
+                    principal.setRank(arch);
+                }
+
                 principal.precargarPantallaIntermedio(darMinas());
                 principal.cargarNuevaPantallaIntermedio();
             } else if (fxElegirGrande.isSelected()) {
+
+                if (fxElegirFacil.isSelected()) {
+                    arch = "GraFa.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirMedio.isSelected()) {
+                    arch = "GraMe.dat";
+                    principal.setRank(arch);
+                } else if (fxElegirDificil.isSelected()) {
+                    arch = "GraDi.dat";
+                    principal.setRank(arch);
+                }
+
                 principal.precargarPantallaDificil(darMinas());
                 principal.cargarNuevaPantallaDificil();
             }
-        }else{
+        } else {
             alerta("Selecciona las 2 opciones");
-        }      
+        }
     }
 
     public void clickAtrasElegir() {
