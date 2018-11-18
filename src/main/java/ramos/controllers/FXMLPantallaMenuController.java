@@ -55,11 +55,12 @@ public class FXMLPantallaMenuController implements Initializable {
     }
 
     public void clickVerRanking() {
-
+        principal.cargarPantallaRanking();
     }
 
     public void clickAyuda() {
         principal.cargarPantallaAyuda();
+        
     }
 
     public void clickSalir() {
