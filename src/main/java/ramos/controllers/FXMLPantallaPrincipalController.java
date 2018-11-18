@@ -365,6 +365,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarPantallaAyuda() {
         fxRoot.setCenter(pantallaAyuda);
         
+        
     }
     
     @FXML
