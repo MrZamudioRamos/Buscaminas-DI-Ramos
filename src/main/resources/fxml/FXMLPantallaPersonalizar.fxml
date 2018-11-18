@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,8 +24,6 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TextField fx:id="fxTextFieldAncho" layoutX="243.0" layoutY="118.0" />
-      <TextField fx:id="fxTextFieldAlto" layoutX="243.0" layoutY="174.0" />
       <Label layoutX="157.0" layoutY="118.0" prefHeight="25.0" prefWidth="77.0" text="Ancho" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="18.0" />
@@ -60,5 +59,9 @@
       </Label>
       <Button layoutX="392.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickJugar" prefHeight="47.0" prefWidth="136.0" text="JUGAR" />
       <Button layoutX="73.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="47.0" prefWidth="136.0" text="ATRÁS" />
+      <Slider fx:id="fxAnchoSlider" layoutX="232.0" layoutY="122.0" majorTickUnit="2.0" minorTickCount="1" prefHeight="38.0" prefWidth="304.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="fxAltoSlider" blockIncrement="1.0" layoutX="232.0" layoutY="177.0" majorTickUnit="2.0" minorTickCount="1" prefHeight="38.0" prefWidth="304.0" showTickLabels="true" showTickMarks="true" />
+      <TextField fx:id="fxAncho" layoutX="544.0" layoutY="119.0" prefHeight="25.0" prefWidth="38.0" />
+      <TextField fx:id="fxAlto" layoutX="544.0" layoutY="174.0" prefHeight="25.0" prefWidth="38.0" />
    </children>
 </AnchorPane>
