@@ -7,6 +7,7 @@ package ramos.controllers;
 
 import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -28,6 +30,7 @@ import ramos.core.Buscaminas;
 import ramos.core.Casilla;
 import ramos.core.DemasiadasMinasException;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
+import ramos.core.Usuario;
 
 /**
  * FXML Controller class
@@ -37,6 +40,8 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
 public class FXMLPantallaIntermedioController implements Initializable {
 
     Temporizador temp = new Temporizador();
+    
+    Usuario user = new Usuario();
             
     private FXMLPantallaPrincipalController principal;
 
@@ -397,11 +402,27 @@ public class FXMLPantallaIntermedioController implements Initializable {
             fxReset.setDisable(false);
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
+                user.setNombre(texto());
+                user.setTiempo(temp.getSeconds());
+                System.out.println(user.toString());
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
                 gameOverMostrarSolucion();
             }
          }
+    }
+    
+    public String texto() {
+        String nombre = "";
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Text Input Dialog");
+        dialog.setHeaderText("Text Input Dialog");
+        dialog.setContentText("Please enter your name:");
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            nombre= result.get();
+        }
+        return nombre;
     }
 
     public void alerta(Alert.AlertType tipo, String mensaje) {
