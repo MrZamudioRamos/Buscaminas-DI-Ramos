@@ -53,6 +53,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private FXMLPantallaJuegoPersonalizadoController juegoPersonalizadoController;
     private AnchorPane pantallaAyuda;
     private FXMLPantallaAyudaController AyudaController;
+    private AnchorPane pantallaRanking;
+    private FXMLPantallaRankingController RankingController;
 
     public FXMLPantallaPersonalizarController getPersonalizar() {
         return personalizar;
@@ -93,6 +95,23 @@ public class FXMLPantallaPrincipalController implements Initializable {
             AyudaController
                     = loaderMenu.getController();
             AyudaController.setPrincipal(this);
+
+        } catch (IOException ex) {
+
+            Logger.getLogger(FXMLPantallaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @FXML
+    public void precargarPantallaRanking() {
+
+        try {
+            FXMLLoader loaderMenu = new FXMLLoader(
+                    getClass().getResource(
+                            "/fxml/FXMLPantallaRanking.fxml"));
+            pantallaRanking = loaderMenu.load();
+            RankingController
+                    = loaderMenu.getController();
+            RankingController.setPrincipal(this);
 
         } catch (IOException ex) {
 
@@ -341,6 +360,12 @@ public class FXMLPantallaPrincipalController implements Initializable {
         fxRoot.setCenter(pantallaAyuda);
         
     }
+    
+    @FXML
+    public void cargarPantallaRanking() {
+        fxRoot.setCenter(pantallaRanking);
+        
+    }
 
     public void clickInicio() {
         cargarPantallaOpciones();
@@ -361,6 +386,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         precargarPantallaMenu();
+        precargarPantallaRanking();
         precargarPantallaAyuda();
         precargarPantallaOpciones();
         // precargarPantallaDificil();

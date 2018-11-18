@@ -37,6 +37,9 @@ public class MainBuscaminas extends Application {
         primaryStage.setTitle("BUSCAMINAS");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        
         //para no poder maximizar pantalla y
         //primaryStage.setResizable(false);
     }
