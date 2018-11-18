@@ -74,7 +74,7 @@ public class FXMLPantallaPersonalizarController implements Initializable {
         fxAltoSlider.setMax((int) 24);
 
         fxAnchoSlider.setMin((int) 8);
-        fxAnchoSlider.setMax((int) 32);
+        fxAnchoSlider.setMax((int) 24);
 
         fxAltoSlider.valueProperty().addListener((obs, oldval, newVal)
                 -> fxAltoSlider.setValue(newVal.intValue()));
