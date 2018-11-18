@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaOpcionesController">
       <children>
-      <Rectangle fx:id="fxFondoOpciones" arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+      <Rectangle fx:id="fxFondoOpciones" arcHeight="5.0" arcWidth="5.0" height="484.0" stroke="BLACK" strokeType="INSIDE" width="651.0">
          <fill>
             <LinearGradient endX="0.6619047619047619" endY="0.047619047619047616" startX="0.5761904761904761">
                <stops>
@@ -18,8 +18,8 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Button layoutX="152.0" layoutY="37.0" mnemonicParsing="false" onAction="#clickPorDefecto" prefHeight="327.0" prefWidth="186.0" text="POR DEFECTO" />
-      <Button layoutX="388.0" layoutY="36.0" mnemonicParsing="false" onAction="#clickPersonalizado" prefHeight="327.0" prefWidth="186.0" text="PERSONALIZADO" />
-      <Button layoutX="14.0" layoutY="309.0" mnemonicParsing="false" onAction="#clickAtrasOpciones" prefHeight="55.0" prefWidth="127.0" text="ATRÁS" />
+      <Button layoutX="165.0" layoutY="99.0" mnemonicParsing="false" onAction="#clickPorDefecto" prefHeight="327.0" prefWidth="186.0" text="POR DEFECTO" textOverrun="LEADING_WORD_ELLIPSIS" />
+      <Button layoutX="391.0" layoutY="99.0" mnemonicParsing="false" onAction="#clickPersonalizado" prefHeight="327.0" prefWidth="186.0" text="PERSONALIZADO" />
+      <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onAction="#clickAtrasOpciones" prefHeight="55.0" prefWidth="127.0" text="ATRÁS" />
    </children>
 </AnchorPane>

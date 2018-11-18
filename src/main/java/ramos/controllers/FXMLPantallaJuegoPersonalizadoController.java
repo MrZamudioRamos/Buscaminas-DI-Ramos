@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ramos.controllers;
 
+import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,17 +12,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import ramos.clases.Juego;
+import ramos.clases.Temporizador;
 import ramos.core.Buscaminas;
 import ramos.core.Casilla;
 import ramos.core.DemasiadasMinasException;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
+import ramos.core.Usuario;
 
 /**
  * FXML Controller class
@@ -32,9 +32,13 @@ import ramos.core.NumeroDeVidasFueraDeRangoException;
  * @author Ricardo
  */
 public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
-
+    
+     Temporizador temp = new Temporizador();
+     
+     Usuario user = new Usuario();
     @FXML
     private GridPane fxGridPanePersonalizado;
+
 
     private FXMLPantallaPersonalizarController personalizar;
 
@@ -116,11 +120,14 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     }
 
     Image imgBandera = new Image("/images/bandera.png");
+    Image imagenMina = new Image("/images/mina.png");
+    Image imagenPregunta = new Image("/images/pregunta.png");
 
     public void juegoNuevo(int ancho, int alto, int minas, int vidas) throws NumeroDeVidasFueraDeRangoException {
         try {
             juego = new Buscaminas(ancho, alto, minas, vidas);
             juego.soportaBanderas(true);
+            juego.soportaInterrogacion(true);
         } catch (DemasiadasMinasException e) {
             System.out.println("Has puesto demasiadas minas");
         }
@@ -149,7 +156,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
             for (int x = 0; x < juego.ancho(); x++) {
                 // Creo una casilla personalizada con las coordenadas
                 Casilla casilla = new Casilla(x, y, " ");
-
+                casilla.setMaxSize(MAX_VALUE, MAX_VALUE);
                 // Le doy una acción, de tipo ratón.
                 casilla.setOnMouseClicked(p -> {
                     // Si el jugador pulsa el botón izquierdo del ratón,
@@ -158,18 +165,19 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                     // bandera.
 
                     // CAVO
-                    if (p.getButton() == MouseButton.PRIMARY) {
+                   if (p.getButton() == MouseButton.PRIMARY) {
                         juego.cavar(casilla.getX(), casilla.getY());
                     } // BANDERA
                     else if (p.getButton() == MouseButton.SECONDARY) {
                         juego.marcarBandera(casilla.getX(), casilla.getY());
+                        juego.setPreguntamarcada(true);
+                    } else if (p.getButton() == MouseButton.SECONDARY && juego.isPreguntamarcada()) {
+                        juego.marcarInterrogacion(casilla.getX(), casilla.getY());
                     }
                     actualizarTablero();
                 });
 
                 fxGridPanePersonalizado.add(casilla, x, y);
-                fxGridPanePersonalizado.setLayoutX(214);
-                fxGridPanePersonalizado.setLayoutY(67);
 
                 /*
 				 * Cada casilla que creo, la meto en un array de tipo Nodo que
@@ -201,11 +209,16 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                 Button cuadro = (Button) casillas[y][x];
 
                 // Si está destapada
-                if (juego.estaDestapada(x, y)) {
+                 if (juego.estaDestapada(x, y)) {
                     cuadro.setDisable(true);
                     // Si hay mina
                     if (juego.hayMina(x, y)) {
                         cuadro.getStyleClass().add("casillaMina");
+                        ImageView imagenMina = new ImageView(this.imagenMina);
+                        imagenMina.setFitWidth(10);
+                        imagenMina.setFitHeight(15);
+
+                        cuadro.setGraphic(imagenMina);
                     } else {
                         // Si tiene minas alrededor, le ponemos el número.
                         if (juego.hayMinasAlrededor(x, y)) {
@@ -218,26 +231,53 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                     if (juego.tieneBandera(x, y)) {
                         // cuadro.getStyleClass().add("casillaBandera");
                         ImageView imgBandera2 = new ImageView(imgBandera);
+                        imgBandera2.setFitWidth(8);
+                        imgBandera2.setFitHeight(15);
+
+                        cuadro.setGraphic(imgBandera2);
+
+                        juego.marcarBanderaPorInterrogacion(x, y);
+                    } else if (juego.isPreguntamarcada() && juego.getMarcarBanderaPorInterrogacion(x, y)) {
+                        ImageView imgBandera2 = new ImageView(imagenPregunta);
                         imgBandera2.setFitWidth(15);
                         imgBandera2.setFitHeight(15);
 
                         cuadro.setGraphic(imgBandera2);
+                        juego.setPreguntamarcada(true);
                     } else {
-                        // cuadro.getStyleClass().remove("casillaBandera");
                         cuadro.setGraphic(null);
                     }
                 }
 
             }
         }
-        if (juego.isGameOver()) {
+       if (juego.isGameOver()) {
+            gameOverMostrarSolucion();
+           
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
+                user.setNombre(texto());
+                user.setTiempo(temp.getSeconds());
+                System.out.println(user.toString());
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
+                gameOverMostrarSolucion();
             }
-        }
+         }
 
+    }
+    
+    public String texto() {
+        String nombre = "";
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Text Input Dialog");
+        dialog.setHeaderText("Text Input Dialog");
+        dialog.setContentText("Please enter your name:");
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            nombre= result.get();
+        }
+        return nombre;
     }
 
     public void alerta(Alert.AlertType tipo, String mensaje) {
@@ -257,21 +297,18 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 	 * dónde estaban las minas y las banderas erróneas.
      */
     public void gameOverMostrarSolucion() {
-        for (int i = 0; i < juego.alto(); i++) {
-            for (int j = 0; j < juego.ancho(); j++) {
-                if (juego.tieneBandera(j, i)) {
-                    if (!juego.hayMina(j, i)) {
-                        // Mal
-                    }
-                } else if (juego.hayMina(j, i)) {
-                    // Mal
-                }
+        for (int i = 0; i < fxGridPanePersonalizado.getWidth(); i++) {
+            for (int j = 0; j < fxGridPanePersonalizado.getHeight(); j++) {
+                juego.cavar2(i, j);
             }
+
         }
     }
+ 
 
     public void clickReiniciarPersonalizado() {
         juego.reset();
+        Tablero();
     }
 
     public void clickSalirPersonalizado() {

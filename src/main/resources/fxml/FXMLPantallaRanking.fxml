@@ -13,9 +13,9 @@
       <Text layoutX="731.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIFÍCIL" />
       <ComboBox fx:id="fxTamanio" layoutX="325.0" layoutY="29.0" onAction="#ShowRanking" prefHeight="31.0" prefWidth="268.0" />
       <Text layoutX="234.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TAMAÑO" />
-      <ListView fx:id="fxFacil" layoutX="30.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
-      <ListView fx:id="fxMedio" layoutX="325.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
-      <ListView fx:id="fxDificil" layoutX="620.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
+      <ListView layoutX="30.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
+      <ListView layoutX="325.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
+      <ListView layoutX="620.0" layoutY="116.0" prefHeight="402.0" prefWidth="268.0" />
       <Button fx:id="fxBackMenu" layoutX="791.0" layoutY="530.0" mnemonicParsing="false" onAction="#BackMenu" prefHeight="40.0" prefWidth="97.0" text="&lt;&lt; Menu" />
    </children>
 </AnchorPane>

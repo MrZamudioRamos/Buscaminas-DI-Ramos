@@ -22,7 +22,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ramos.core.Ficheros;
-import ramos.core.NumeroDeVidasFueraDeRangoException;
 import ramos.core.Usuario;
 
 /**
@@ -51,19 +50,19 @@ public class FXMLPantallaPrincipalController implements Initializable {
         ezrank.add("PeqFa.dat");
         ezrank.add("PeqMe.dat");
         ezrank.add("PeqDi.dat");
-        
+
         medrank.add("MedFa.dat");
         medrank.add("MedMe.dat");
         medrank.add("MedDif.dat");
-        
+
         difrank.add("DifFa.dat");
         difrank.add("DifMe.dat");
         difrank.add("DifDi.dat");
-        
+
         persrank.add("PersFa.dat");
         persrank.add("PersMe.dat");
         persrank.add("PersDi.dat");
-        
+
     }
 
     private FXMLPantallaIntermedioController intermedio;
@@ -101,7 +100,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void setRank(String rank) {
         this.rank = rank;
     }
-    
 
     public FXMLPantallaPersonalizarController getPersonalizar() {
         return personalizar;
@@ -317,6 +315,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             Logger.getLogger(FXMLPantallaIntermedioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @FXML
     public void precargarPantallaJuegoPersonalizado(int minas, int alto, int ancho) {
 
@@ -340,43 +339,48 @@ public class FXMLPantallaPrincipalController implements Initializable {
         }
     }
 
+    public void setMyStage(Stage myStage) {
+        this.myStage = myStage;
+    }
 
+    private Stage myStage;
 
     @FXML
     public void cargarPantallaMenu() {
+        fxRoot.setMinHeight(532);
+        fxRoot.setMinWidth(582);
         fxRoot.setCenter(pantallaMenu);
-//        fxRoot.setMinHeight(500);
-//        fxRoot.setMinWidth(600);
+
     }
 
     @FXML
     public void cargarPantallaOpciones() {
-
+        fxRoot.setMinHeight(484);
+        fxRoot.setMinWidth(651);
         fxRoot.setCenter(pantallaOpciones);
-//        fxRoot.setMinHeight(500);
-//        fxRoot.setMinWidth(600);
+        myStage.sizeToScene();
     }
 
     @FXML
     public void cargarPantallaElegir() {
+        fxRoot.setMinHeight(510);
+        fxRoot.setMinWidth(606);
         fxRoot.setCenter(pantallaElegir);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
+        myStage.sizeToScene();
     }
 
     @FXML
     public void cargarPantallaPersonalizar() {
+        fxRoot.setMinHeight(482);
+        fxRoot.setMinWidth(606);
         fxRoot.setCenter(pantallaPersonalizar);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
+        myStage.sizeToScene();
     }
 
     @FXML
     public void cargarPantallaPrincipiante() {
         principianteController.start();
         fxRoot.setCenter(pantallaPrincipiante);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
 
     }
 
@@ -384,10 +388,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarNuevaPantallaPrincipiante() {
         String mina = elegirController.Tablero();
         principianteController.fxLabelNumeroMinasPrincipiante.setText(mina);
+        fxRoot.setMinHeight(480);
+        fxRoot.setMinWidth(640);
         fxRoot.setCenter(pantallaPrincipiante);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
-
+        myStage.sizeToScene();
     }
 
     @FXML
@@ -395,16 +399,18 @@ public class FXMLPantallaPrincipalController implements Initializable {
         String mina = elegirController.Tablero();
         intermedioController.fxLabelNumeroMinasIntermedio.setText(mina);
         fxRoot.setCenter(pantallaIntermedio);
-//        fxRoot.setMinHeight(400);
-//        fxRoot.setMinWidth(600);
+        fxRoot.setMinHeight(696);
+        fxRoot.setMinWidth(800);
+        myStage.sizeToScene();
 
     }
 
     @FXML
     public void cargarPantallaDificil() {
         dificilController.start();
-//        fxRoot.setMinHeight(643);
-//        fxRoot.setMinWidth(840);
+        fxRoot.setMinHeight(765);
+        fxRoot.setMinWidth(1200);
+        myStage.sizeToScene();
         fxRoot.setCenter(pantallaDificil);
 
     }
@@ -413,44 +419,55 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void cargarNuevaPantallaDificil() {
         String mina = elegirController.Tablero();
         dificilController.fxLabelNumeroMinasDificil.setText(mina);
-//        fxRoot.setMinHeight(800);
-//        fxRoot.setMinWidth(1000);
+        fxRoot.setMinHeight(765);
+        fxRoot.setMinWidth(1200);
+        myStage.sizeToScene();
         fxRoot.setCenter(pantallaDificil);
 
     }
-    
+
     @FXML
     public void cargarNuevaPantallaPersonalizado() {
-//        fxRoot.setMinHeight(800);
-//        fxRoot.setMinWidth(1000);
+        fxRoot.setMinHeight(480);
+        fxRoot.setMinWidth(640);
+        myStage.sizeToScene();
         fxRoot.setCenter(pantallaJuegoPersonalizado);
-        
+
     }
 
     @FXML
     public void cargarPantallaIntermedio() {
         intermedioController.start();
-//        fxRoot.setMinHeight(481);
-//        fxRoot.setMinWidth(640);
+        fxRoot.setMinHeight(696);
+        fxRoot.setMinWidth(800);
+        myStage.sizeToScene();
         fxRoot.setCenter(pantallaIntermedio);
 
     }
 
     @FXML
     public void cargarPantallaJuegoPersonalizado() {
+        fxRoot.setMinHeight(743);
+        fxRoot.setMinWidth(1125);
         fxRoot.setCenter(pantallaJuegoPersonalizado);
+        myStage.sizeToScene();
     }
 
     @FXML
     public void cargarPantallaAyuda() {
+        fxRoot.setMinHeight(534);
+        fxRoot.setMinWidth(710);
         fxRoot.setCenter(pantallaAyuda);
-        
-        
+        myStage.sizeToScene();
+
     }
 
     @FXML
     public void cargarPantallaRanking() {
+        fxRoot.setMinHeight(584);
+        fxRoot.setMinWidth(918);
         fxRoot.setCenter(pantallaRanking);
+        myStage.sizeToScene();
 
     }
 
@@ -472,28 +489,28 @@ public class FXMLPantallaPrincipalController implements Initializable {
         BufferedWriter bw;
         for (int i = 0; i < ezrank.size(); i++) {
             archivo = new File(ezrank.get(i));
-            if(!archivo.exists()){
+            if (!archivo.exists()) {
                 bw = new BufferedWriter(new FileWriter(archivo));
             }
         }
         //verifica los rankings del mediano
         for (int i = 0; i < medrank.size(); i++) {
             archivo = new File(medrank.get(i));
-            if(!archivo.exists()){
+            if (!archivo.exists()) {
                 bw = new BufferedWriter(new FileWriter(archivo));
             }
         }
         //verifica los rankings del grande
         for (int i = 0; i < difrank.size(); i++) {
             archivo = new File(difrank.get(i));
-            if(!archivo.exists()){
+            if (!archivo.exists()) {
                 bw = new BufferedWriter(new FileWriter(archivo));
             }
         }
         //verifica los rankings del personalizado
         for (int i = 0; i < persrank.size(); i++) {
             archivo = new File(persrank.get(i));
-            if(!archivo.exists()){
+            if (!archivo.exists()) {
                 bw = new BufferedWriter(new FileWriter(archivo));
             }
         }

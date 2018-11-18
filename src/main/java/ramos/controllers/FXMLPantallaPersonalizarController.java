@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -65,6 +64,7 @@ public class FXMLPantallaPersonalizarController implements Initializable {
 
     @FXML
     private Slider fxAltoSlider;
+    
 
     private static final int initValueAncho = 8;
     private static final int initValueAlto = 8;
@@ -74,7 +74,7 @@ public class FXMLPantallaPersonalizarController implements Initializable {
         fxAltoSlider.setMax((int) 24);
 
         fxAnchoSlider.setMin((int) 8);
-        fxAnchoSlider.setMax((int) 24);
+        fxAnchoSlider.setMax((int) 32);
 
         fxAltoSlider.valueProperty().addListener((obs, oldval, newVal)
                 -> fxAltoSlider.setValue(newVal.intValue()));

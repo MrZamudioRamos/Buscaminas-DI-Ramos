@@ -6,23 +6,19 @@
 package main;
 
 import java.io.IOException;
-import java.util.Timer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import ramos.core.Casilla;
+import ramos.controllers.FXMLPantallaPrincipalController;
 
 /**
  *
  * @author dam2
  */
 public class MainBuscaminas extends Application {
-
-    
 
     @Override
     public void start(Stage primaryStage)
@@ -32,18 +28,19 @@ public class MainBuscaminas extends Application {
                 getClass().getResource("/fxml/FXMLPantallaPrincipal.fxml"));
         BorderPane root = loaderMenu.load();
 
+        FXMLPantallaPrincipalController inicio = loaderMenu.getController();
+
+        inicio.setMyStage(primaryStage);
         Scene scene = new Scene(root);
+
         primaryStage.getIcons().add(new Image("/images/icon.png"));
         primaryStage.setTitle("BUSCAMINAS");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        
-        
+
         //para no poder maximizar pantalla y
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
     }
-    
 
     /**
      * @param args the command line arguments

@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaPersonalizarController">
+<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaPersonalizarController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="606.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="482.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="635.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
