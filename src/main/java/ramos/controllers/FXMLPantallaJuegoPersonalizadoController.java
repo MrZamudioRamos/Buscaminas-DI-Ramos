@@ -215,8 +215,8 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                     if (juego.hayMina(x, y)) {
                         cuadro.getStyleClass().add("casillaMina");
                         ImageView imagenMina = new ImageView(this.imagenMina);
-                        imagenMina.setFitWidth(10);
-                        imagenMina.setFitHeight(15);
+                        imagenMina.setFitWidth(8);
+                        imagenMina.setFitHeight(8);
 
                         cuadro.setGraphic(imagenMina);
                     } else {
@@ -232,15 +232,15 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                         // cuadro.getStyleClass().add("casillaBandera");
                         ImageView imgBandera2 = new ImageView(imgBandera);
                         imgBandera2.setFitWidth(8);
-                        imgBandera2.setFitHeight(15);
+                        imgBandera2.setFitHeight(8);
 
                         cuadro.setGraphic(imgBandera2);
 
                         juego.marcarBanderaPorInterrogacion(x, y);
                     } else if (juego.isPreguntamarcada() && juego.getMarcarBanderaPorInterrogacion(x, y)) {
                         ImageView imgBandera2 = new ImageView(imagenPregunta);
-                        imgBandera2.setFitWidth(15);
-                        imgBandera2.setFitHeight(15);
+                        imgBandera2.setFitWidth(8);
+                        imgBandera2.setFitHeight(8);
 
                         cuadro.setGraphic(imgBandera2);
                         juego.setPreguntamarcada(true);
@@ -297,8 +297,8 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 	 * dónde estaban las minas y las banderas erróneas.
      */
     public void gameOverMostrarSolucion() {
-        for (int i = 0; i < fxGridPanePersonalizado.getWidth(); i++) {
-            for (int j = 0; j < fxGridPanePersonalizado.getHeight(); j++) {
+        for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < ancho; j++) {
                 juego.cavar2(i, j);
             }
 

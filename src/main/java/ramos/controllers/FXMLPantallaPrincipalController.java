@@ -428,8 +428,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML
     public void cargarNuevaPantallaPersonalizado() {
-        fxRoot.setMinHeight(480);
-        fxRoot.setMinWidth(640);
+        fxRoot.setMinHeight(731);
+        fxRoot.setMinWidth(1299);
         myStage.sizeToScene();
         fxRoot.setCenter(pantallaJuegoPersonalizado);
 
