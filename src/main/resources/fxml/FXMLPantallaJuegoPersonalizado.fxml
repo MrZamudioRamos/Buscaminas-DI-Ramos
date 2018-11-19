@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="936.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaJuegoPersonalizadoController">
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="936.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ramos.controllers.FXMLPantallaJuegoPersonalizadoController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="731.0" layoutX="189.0" stroke="BLACK" strokeType="INSIDE" width="1100.0">
          <fill>
@@ -47,7 +47,7 @@
          </font>
       </Label>
       <Separator layoutX="196.0" layoutY="6.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="2.0" />
-      <Button fx:id="fxReset" layoutX="58.0" layoutY="343.0" mnemonicParsing="false" onAction="#clickReiniciarPersonalizado" prefHeight="39.0" prefWidth="81.0" text="REINICIAR" />
+      <Button fx:id="fxReset" layoutX="58.0" layoutY="343.0" mnemonicParsing="false" onAction="#clickReiniciarPersonalizado" prefHeight="39.0" prefWidth="81.0" text="INICIAR" />
       <Button layoutX="58.0" layoutY="421.0" mnemonicParsing="false" onAction="#clickSalirPersonalizado" prefHeight="39.0" prefWidth="81.0" text="SALIR" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="39.0" layoutX="117.0" layoutY="140.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
       <Label fx:id="fxLabelNumeroMinasPersonalizado" layoutX="141.0" layoutY="146.0" prefHeight="27.0" prefWidth="19.0" text="0" textFill="#070505">
@@ -65,7 +65,7 @@
             <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Text fx:id="fxText" layoutX="385.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.99999204277992">
+      <Text fx:id="fxText" layoutX="805.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="80.99999204277992">
          <font>
             <Font size="15.0" />
          </font>

@@ -1,6 +1,7 @@
 
 package ramos.controllers;
 
+import java.io.IOException;
 import static java.lang.Double.MAX_VALUE;
 import java.net.URL;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,10 +21,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Text;
+import ramos.clases.Juego;
 import ramos.clases.Temporizador;
 import ramos.core.Buscaminas;
 import ramos.core.Casilla;
 import ramos.core.DemasiadasMinasException;
+import ramos.core.Ficheros;
 import ramos.core.NumeroDeVidasFueraDeRangoException;
 import ramos.core.Usuario;
 
@@ -33,13 +38,24 @@ import ramos.core.Usuario;
  */
 public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     
-     Temporizador temp = new Temporizador();
-     
-     Usuario user = new Usuario();
+    Juego game = new Juego();
+    
+    Usuario user = new Usuario();
+    
+    Temporizador temp = new Temporizador();
+    
+    @FXML
+    public Label fxLabelNumeroMinasPersonalizado;
+            
     @FXML
     private GridPane fxGridPanePersonalizado;
 
+    @FXML
+    protected Text fxText;
 
+    @FXML
+    protected Button fxReset;
+    
     private FXMLPantallaPersonalizarController personalizar;
 
     private FXMLPantallaPrincipalController principal;
@@ -109,7 +125,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     }
 
     public void Tablero() {
-
+        fxGridPanePersonalizado.setDisable(true);
         try {
             juegoNuevo(ancho, alto, minas, vidas);
         } catch (NumeroDeVidasFueraDeRangoException ex) {
@@ -174,7 +190,11 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
                     } else if (p.getButton() == MouseButton.SECONDARY && juego.isPreguntamarcada()) {
                         juego.marcarInterrogacion(casilla.getX(), casilla.getY());
                     }
-                    actualizarTablero();
+                    try {
+                        actualizarTablero();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FXMLPantallaJuegoPersonalizadoController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
 
                 fxGridPanePersonalizado.add(casilla, x, y);
@@ -195,7 +215,7 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
 //        }
     }
 
-    public void actualizarTablero() {
+    public void actualizarTablero() throws IOException {
         /*
 		 * Este método debe actualizar el estado de cada casilla en el tablero.
 		 * Se le debe llamar cada vez que se realice alguna opción.
@@ -252,13 +272,18 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
             }
         }
        if (juego.isGameOver()) {
+            temp.stop();
             gameOverMostrarSolucion();
-           
+            fxReset.setDisable(false);
             if (juego.isGanador()) {
                 alerta("¡Has ganado!");
                 user.setNombre(texto());
                 user.setTiempo(temp.getSeconds());
                 System.out.println(user.toString());
+                Ficheros arch = new Ficheros();
+                String ra = principal.getRank();
+                arch.Escribir(ra, user);
+                
             } else {
                 alerta(Alert.AlertType.WARNING, "Has perdido");
                 gameOverMostrarSolucion();
@@ -266,6 +291,8 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
          }
 
     }
+    
+    
     
     public String texto() {
         String nombre = "";
@@ -306,9 +333,18 @@ public class FXMLPantallaJuegoPersonalizadoController implements Initializable {
     }
  
 
+    public void start() {
+        temp.setSeconds(0);
+        temp.time(fxText);
+        temp.start();
+    }
+    
     public void clickReiniciarPersonalizado() {
         juego.reset();
         Tablero();
+        start();
+        fxReset.setDisable(true);
+        fxGridPanePersonalizado.setDisable(false);
     }
 
     public void clickSalirPersonalizado() {
